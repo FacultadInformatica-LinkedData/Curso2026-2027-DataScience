@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "sc": "http://Schema.org/",
+    "cac": "http://www.caceres.es/catalogo/",
+    "city": "sc:city",
+    "poblacion": "sc:population",
+    "country": "sc:addressCountry",
+    "universities": "cac:universidades",
+    "name": "sc:name",
+    "acronym": "sc:alternateName"
+  },
+  "@id": "cac:api/recurso",
+  "@type": "cac:informacion",
+  "city": "Cáceres",
+  "poblacion": 96651,
+  "country": "Spain",
+  "universities": [
+    {
+      "@id": "cac:universidades/UEx",
+      "@type": "sc:CollegeOrUniversity",
+      "name": "Universidad de Extremadura",
+      "acronym": "UEx"
+    },
+    {
+      "@id": "cac:universidades/UCa",
+      "@type": "sc:CollegeOrUniversity",
+      "name": "Universidad de Caceres",
+      "acronym": "UCa"
+    }
+  ]
+}
