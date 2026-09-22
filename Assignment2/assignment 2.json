@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "city": {
+      "@id":"http://schema.org/city",
+      "@type":"city"
+    },
+     
+    "population":{
+      "@id":"http://schema.org/population"
+     
+    },
+    "country":{
+      "@id":"http://schema.org/country",
+      "@type":"country"
+    },
+   
+    "universidad": {
+      "@id": "http://schema.org/universidad",
+      "@type":"universidad"
+      
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://example.org/Barcelona",
+  "name": "Barcelona",
+  "country":"Espana",
+  
+  "population": 5000000,
+  "universidad": ["UAB","UPB"]
+  
+  
+}
