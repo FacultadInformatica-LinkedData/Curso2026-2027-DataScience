@@ -26,30 +26,38 @@ JSON
 JSON-LD
 {
   "@context": {
-    "ciudad": "https://schema.org/City",
-    "poblacion": "https://schema.org/population",
-    "pais": "https://schema.org/Country",
-    "universidades": "https://schema.org/CollegeOrUniversity",
-    "fullname": "https://schema.org/name",
-    "acronym": "https://schema.org/alternateName"
+    "schema": "https://schema.org/",
+    "ciudad": "schema:City",
+    "poblacion": "schema:population",
+    "pais": "schema:Country",
+    "universidades": "schema:CollegeOrUniversity",
+    "fullname": "schema:name",
+    "acronym": "schema:alternateName"
   },
-  "@type": "City",
+
+  "@id": "https://www.wikidata.org/entity/Q2807",
+  "@type": "schema:City",
+
   "ciudad": "Madrid",
   "poblacion": 5000000,
   "pais": "España",
+
   "universidades": [
     {
-      "@type": "CollegeOrUniversity",
+      "@id": "https://www.upm.es/",
+      "@type": "schema:CollegeOrUniversity",
       "fullname": "Universidad Politécnica de Madrid",
       "acronym": "UPM"
     },
     {
-      "@type": "CollegeOrUniversity",
+      "@id": "https://www.ucm.es/",
+      "@type": "schema:CollegeOrUniversity",
       "fullname": "Universidad Complutense de Madrid",
       "acronym": "UCM"
     },
     {
-      "@type": "CollegeOrUniversity",
+      "@id": "https://www.uc3m.es/",
+      "@type": "schema:CollegeOrUniversity",
       "fullname": "Universidad Carlos III de Madrid",
       "acronym": "UC3M"
     }
