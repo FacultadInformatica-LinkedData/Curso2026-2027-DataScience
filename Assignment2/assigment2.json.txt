@@ -1,0 +1,13 @@
+{
+  "@context":"http://schema.org/",
+  "@id":"http://datosmadrid.es/recurso/3C",
+  "@type":"City",
+  "name":"Tres Cantos",
+  "poblacion":"51000",
+  "pais":"España",
+  "universidades":[
+    {"@id":"http://datosmadrid.es/recurso/3C/UPT","full_name": "Universidad Politécica de Tres Cantos","acro":"UPT"}, 
+    {"@id":"http://datosmadrid.es/recurso/3C/UCT","full_name":"Universidad Complutense de Tres Cantos","acro":"UCT"},
+    {"@id":"http://datosmadrid.es/recurso/3C/UAT","full_name":"Universidad Autónoma de Tres Cantos", "acro":"UAT"}
+  ]
+}
