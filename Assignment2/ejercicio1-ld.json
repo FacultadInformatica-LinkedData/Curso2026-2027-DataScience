@@ -1,0 +1,22 @@
+    {
+        "@context":{
+            "mad":"https://ejemplo.assignment2.org/",
+            "city":"mad:city",
+            "population":"mad:population",
+            "country":"mad:country",
+            "universities":"mad:universities"
+
+            
+        },
+        "@id":"mad:Madrid",
+        "@type":"mad:City",
+        "city":"Madrid",
+        "population":3527924,
+        "country":"Spain",
+        "universities":[
+            "Universidad Politécnica de Madrid (UPM)",
+            "Universidad Autónoma de Madrid (UAM)",
+            "Universidad Complutense de Madrid (UCM)"
+        ]
+
+    }
