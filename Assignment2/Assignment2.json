@@ -1,0 +1,20 @@
+{
+  "@context": "http://schema.org/",
+  "@id": "http://example.org/recurso/country/ciudad",
+  "@type": "city",
+  "name": "Madrid",
+  "population": "3506730",
+  "belongs": {
+    "@id": "http://example.org/recurso/country",
+    "@type": "country",
+    "name": "Spain"},
+  "universities": [{
+    "@id": "http://example.org/recurso/country/city/university1",
+    "@type": "university",
+    "fullName": "Universidad Politecnica de Madrid", 
+    "acronym": "UPM"},
+    {"@id": "http://example.org/recurso/country/city/university2",
+    "@type": "university",
+    "fullName": "Universidad Complutense de Madrid",
+    "acronym": "UCM"}]
+}
