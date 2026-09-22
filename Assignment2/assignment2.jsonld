@@ -1,0 +1,13 @@
+{
+	"@context": "https://schema.org",
+	"@id":"https://es.wikipedia.org/wiki/Madrid",
+	"@type":"City",
+	"name":"Madrid",
+	"population":3000000,
+  	"country":{"@id": "https://es.wikipedia.org/wiki/Espa%C3%B1aSpain", "@type": "Country", "name": "Spain"},
+	"universities":
+	[
+	{"@id":"https://www.upm.es/", "@type": "University","name":"Universidad Politécnica de Madrid", "acronym":"UPM"},
+	{"@id":"https://www.ucm.es/", "@type": "University", "name":"Universidad Complutense de Madrid", "acronym":"UCM"}
+	]	
+}
