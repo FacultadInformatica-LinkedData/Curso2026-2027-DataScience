@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "ex": "http://example.org/",
+    "name": "ex:name",
+    "population": "ex:population",
+    "country": "ex:country",
+    "universities": "ex:hasUniversity",
+    "Acronym": "ex:acronym"
+  },
+
+  "@id": "http://example.org/city/Madrid",
+  "@type": "ex:City",
+
+  "name": "Madrid",
+  "population": 3800000,
+  "country": "Spain",
+
+  "universities": [
+    {
+      "@id": "http://example.org/university/UPM",
+      "@type": "ex:University",
+      "name": "Universidad Politecnica de Madrid",
+      "Acronym": "UPM"
+    },
+
+    {
+      "@id": "http://example.org/university/UAM",
+      "@type": "ex:University",
+      "name": "Universidad Autonoma de Madrid",
+      "Acronym": "UAM"
+    }
+  ]
+}
