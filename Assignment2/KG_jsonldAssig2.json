@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "City",
+  "@id":"https://ejemplo.org/recursos/SantiagoCompostela",
+  "ciudad": "Santiago de Compostela",
+  "población": 100.965,
+  "país": {
+    "@type": "Country",
+	"@id":"https://ejemplo.org/recursos/España",
+    "nombre": "España"
+  },
+  "universidades": [
+    {
+      "@type": "University",
+	  "@id":"https://ejemplo.org/recursos/USC",
+      "nombre": "Universidade de Santiago de Compostela",
+      "acronym": "USC"
+    },
+    {
+      "@type": "University",
+	  "@id":"https://ejemplo.org/recursos/UIE",
+      "nombre": "Universidad Intercontinental de la Empresa",
+      "acronym": "UIE"
+    }
+  ]
+}
+		
+		
+		
