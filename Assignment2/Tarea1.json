@@ -1,26 +1,26 @@
 {
   "@context": "https://schema.org",
   "@type": "Ciudad",
-  "@id":"https://ejemplo.org/recursos/Madrid",
-  "ciudad": "Madrid",
-  "población": 3527924,
+  "@id": "https://ejemplo.org/recursos/Boston",
+  "ciudad": "Boston",
+  "población": 675647,
   "país": {
     "@type": "País",
-	"@id":"https://ejemplo.org/recursos/España",
-    "nombre": "España"
+    "@id": "https://ejemplo.org/recursos/EstadosUnidos",
+    "nombre": "Estados Unidos"
   },
   "universidades": [
     {
       "@type": "Universidad",
-	  "@id":"https://ejemplo.org/recursos/UPM",
-      "nombre": "Universidad Politécnica de Madrid",
-      "acronym": "UPM"
+      "@id": "https://ejemplo.org/recursos/Harvard",
+      "nombre": "Universidad de Harvard",
+      "acronym": "Harvard"
     },
     {
       "@type": "Universidad",
-	  "@id":"https://ejemplo.org/recursos/UCM",
-      "nombre": "Universidad Complutense de Madrid",
-      "acronym": "UCM"
+      "@id": "https://ejemplo.org/recursos/MIT",
+      "nombre": "Instituto Tecnológico de Massachusetts",
+      "acronym": "MIT"
     }
   ]
 }
