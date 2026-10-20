@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@id":"http:/example.org/resource/Madrid",
+  "@type": "city",
+  "ciudad":"Madrid",
+  "pais":{
+    "@id":"http:/example.org/resource/España",
+    "@type":"country",
+    "name":"España"},
+  "poblacion":3527924,
+  "universidades":[
+      {"@type":"university",
+       "@id":"http:/example.org/resource/UCM",
+       "name":"Universidad Complutense de Madrid",
+       "acronym":"UCM"},
+      {"@type":"university",
+       "@id":"http:/example.org/resource/UAM",
+       "name":"Universidad Autónoma de Madrid",
+      "acronym":"UAM"},
+      {"@type":"university",
+       "@id":"http:/example.org/resource/UPM",
+       "name":"Universidad Politécnica de Madrid",
+      "acronym":"UPM"},
+      {"@type":"university",
+       "@id":"http:/example.org/resource/UC3M",
+       "name":"Universidad Carlos III de Madrid",
+      "acronym":"UC3M"}
+    ]
+}
