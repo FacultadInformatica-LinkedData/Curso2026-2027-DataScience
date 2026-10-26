@@ -1,4 +1,4 @@
-# Members of the group
+# Group Members
 ---
 - **Name:** Chenxi Bai 					| **GitHub User:** GlitcherCloss
 - **Name:** Álvaro de las Heras Cardona | **GitHub User:** adelasheras
