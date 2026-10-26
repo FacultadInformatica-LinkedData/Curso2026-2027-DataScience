@@ -4,7 +4,7 @@
 from rdflib import Graph, Namespace, Literal, XSD
 from rdflib.namespace import RDF, RDFS
 from oeg_sw_class import Report
-# Do not change the name of the variables
+
 g = Graph()
 g.namespace_manager.bind('ns', Namespace("http://somewhere#"), override=False)
 r = Report()
@@ -41,7 +41,7 @@ add_class(ontology.InterimAssociateProfessor, "InterimAssociateProfessor", ontol
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: Do not remove
+
 r.validate_task_06_01(g)
 
 # Task 6.2
@@ -50,7 +50,7 @@ add_class(ontology.University, "University")
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: Do not remove
+
 r.validate_task_06_02(g)
 
 # Task 6.3
@@ -68,7 +68,7 @@ add_property(ontology.affiliatedWith, "affiliatedWith", ontology.Person, ontolog
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: Do not remove
+
 r.validate_task_06_03(g)
 
 # Task 6.4
@@ -87,7 +87,7 @@ g.add((person.Sven, RDFS.label, Literal("Sven", datatype=XSD.string)))
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: do not remove
+
 r.validate_task_06_04(g)
 
 #Task 6.5
@@ -101,7 +101,7 @@ g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.stri
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: Do not remove
+
 r.validate_task_06_05(g)
 
 #Task 6.6
@@ -113,7 +113,7 @@ g.add((person.Sven, RDF.type, ontology.InterimAssociateProfessor))
 for s, p, o in g:
   print(s,p,o)
 
-#Validation:do not remove
+
 r.validate_task_06_06(g)
 
 # Task 6.7
@@ -123,6 +123,6 @@ g.add((university.Mannheim, RDF.type, ontology.University))
 for s, p, o in g:
   print(s,p,o)
 
-#Validation: Do not remove
+
 r.validate_task_06_07(g)
 r.save_report("_Task_06")
