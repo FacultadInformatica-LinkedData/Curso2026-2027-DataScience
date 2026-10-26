@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Requisitos de la aplicación - AirMove Madrid</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; color: #222; line-height: 1.5; }
+  h1, h2, h3 { color: #1a4d7a; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #eef3f8; }
+  .mock { border: 2px solid #555; border-radius: 10px; background: #fafafa; padding: 12px; margin: 1rem 0; max-width: 720px; }
+  .bar { background: #1a4d7a; color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: bold; }
+  .map { background: #dfe9d8; border: 1px dashed #889; height: 220px; margin: 10px 0; position: relative; border-radius: 6px; }
+  .pin { position: absolute; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; }
+  .g { background: #2e9b4f; } .y { background: #e0b400; } .r { background: #c8372d; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+  .box { border: 1px solid #999; border-radius: 6px; padding: 8px 12px; background: #fff; }
+  .btn { background: #1a4d7a; color: #fff; padding: 6px 12px; border-radius: 6px; display: inline-block; }
+  .chart { height: 90px; background: linear-gradient(90deg,#cfe3f5 0,#cfe3f5 100%); border: 1px solid #99b; display: flex; align-items: flex-end; gap: 6px; padding: 6px; }
+  .chart span { flex: 1; background: #1a4d7a; display: block; }
+  .chart.t span { background: #c8372d; }
+  small { color: #666; }
+</style>
+</head>
+<body>
+<h1>Requisitos de la aplicación: AirMove Madrid</h1>
+<p><strong>Grupo:</strong> Group01.</p>
+
+<h2>1. Objetivo</h2>
+<p><strong>AirMove Madrid</strong> es una aplicación web que muestra, sobre un mapa de Madrid, la calidad del aire medida por las estaciones de la ciudad junto con el tráfico rodado de su entorno. Ayuda a ciudadanos y gestores municipales a ver dónde y cuándo coinciden un tráfico y una contaminación altos.</p>
+
+<h2>2. Conjuntos de datos utilizados</h2>
+<ul>
+  <li>D1. Calidad del aire, datos horarios (CSV)</li>
+  <li>D2. Calidad del aire, estaciones de control (CSV)</li>
+  <li>D3. Tráfico, histórico de datos desde 2013 (CSV)</li>
+  <li>D4. Tráfico, ubicación de los puntos de medida (CSV)</li>
+</ul>
+<p>Tras transformar los datos a RDF, se enlazarán por ubicación (puntos de tráfico más cercanos a cada estación, distrito de cada estación) y con entidades externas, como los distritos de Madrid.</p>
+
+<h2>3. Usuarios</h2>
+<table>
+  <tr><th>Usuario</th><th>Necesidades</th></tr>
+  <tr><td>Ciudadano</td><td>Saber si el aire cerca de su casa, colegio o trabajo es bueno ahora y a qué horas suele ser peor.</td></tr>
+  <tr><td>Ciclista o corredor</td><td>Elegir la mejor hora del día y la zona con aire más limpio.</td></tr>
+  <tr><td>Gestor municipal o analista</td><td>Encontrar los distritos y las horas con tráfico y contaminación altos, para planificar medidas.</td></tr>
+</table>
+
+<h2>4. Requisitos funcionales</h2>
+<table>
+  <tr><th>ID</th><th>Requisito</th></tr>
+  <tr><td>FR1</td><td>Mostrar las estaciones de calidad del aire en un mapa, coloreadas según el último valor del contaminante elegido (por ejemplo, NO2, PM10, PM2.5, O3).</td></tr>
+  <tr><td>FR2</td><td>Permitir elegir un contaminante, una fecha y un rango de horas.</td></tr>
+  <tr><td>FR3</td><td>Mostrar el detalle de una estación: nombre, distrito y evolución del contaminante durante el día.</td></tr>
+  <tr><td>FR4</td><td>Mostrar la intensidad de tráfico de los puntos de medida cercanos a la estación elegida en el mismo periodo.</td></tr>
+  <tr><td>FR5</td><td>Comparar la calidad del aire y el tráfico de una estación a lo largo del día en un mismo gráfico.</td></tr>
+  <tr><td>FR6</td><td>Mostrar un ranking de distritos por nivel medio de contaminante e intensidad media de tráfico.</td></tr>
+  <tr><td>FR7</td><td>Marcar los valores que los datos originales señalan como no válidos y excluirlos de los gráficos.</td></tr>
+  <tr><td>FR8</td><td>Ofrecer en cada pantalla enlaces a los conjuntos de datos originales y a la licencia (CC BY 4.0).</td></tr>
+</table>
+
+<h2>5. Requisitos no funcionales</h2>
+<ul>
+  <li>La aplicación funciona en el navegador de un ordenador y de un móvil.</li>
+  <li>Los datos se consultan desde el RDF publicado por el grupo (SPARQL), no desde los CSV originales.</li>
+  <li>Los valores y las etiquetas se muestran en español e inglés.</li>
+  <li>La atribución de la fuente (Ayuntamiento de Madrid) está siempre visible.</li>
+</ul>
+
+<h2>6. Preguntas de ejemplo que responde la aplicación</h2>
+<ol>
+  <li>¿Qué estaciones tienen ahora mismo el nivel de NO2 más alto?</li>
+  <li>¿Cómo cambia la intensidad de tráfico cerca de una estación a lo largo del día en comparación con su PM10?</li>
+  <li>¿Qué distritos tienen a la vez mucho tráfico y mucha contaminación entre semana?</li>
+  <li>¿A qué horas es mejor el aire en un distrito dado?</li>
+</ol>
+
+<h2>7. Bocetos de interfaz</h2>
+<p><small>Dibujos esquemáticos hechos en HTML/CSS. Los colores y las posiciones son orientativos.</small></p>
+
+<h3>Pantalla 1. Mapa de estaciones</h3>
+<div class="mock">
+  <div class="bar">AirMove Madrid</div>
+  <div class="row">
+    <div class="box">Contaminante: <strong>NO2 ▾</strong></div>
+    <div class="box">Fecha: <strong>20/10/2026 ▾</strong></div>
+    <div class="box">Hora: <strong>08:00 ▾</strong></div>
+  </div>
+  <div class="map">
+    <div class="pin g" style="left:20%;top:30%"></div>
+    <div class="pin y" style="left:45%;top:50%"></div>
+    <div class="pin r" style="left:60%;top:35%"></div>
+    <div class="pin y" style="left:75%;top:65%"></div>
+    <div class="pin g" style="left:30%;top:70%"></div>
+  </div>
+  <div class="row"><span>● Buena</span><span>● Moderada</span><span>● Alta</span></div>
+  <small>Pulsa una estación para ver su detalle. Fuente: Ayuntamiento de Madrid, CC BY 4.0.</small>
+</div>
+
+<h3>Pantalla 2. Detalle de estación: calidad del aire y tráfico</h3>
+<div class="mock">
+  <div class="bar">← Volver · Estación: (nombre) · Distrito: (nombre)</div>
+  <p><strong>NO2 a lo largo del día</strong></p>
+  <div class="chart"><span style="height:30%"></span><span style="height:45%"></span><span style="height:80%"></span><span style="height:65%"></span><span style="height:40%"></span><span style="height:55%"></span><span style="height:90%"></span><span style="height:50%"></span></div>
+  <p><strong>Intensidad de tráfico (puntos cercanos)</strong></p>
+  <div class="chart t"><span style="height:35%"></span><span style="height:55%"></span><span style="height:90%"></span><span style="height:70%"></span><span style="height:45%"></span><span style="height:60%"></span><span style="height:95%"></span><span style="height:55%"></span></div>
+  <div class="row"><div class="box">Puntos de tráfico cercanos: <strong>5</strong></div><div class="box">Valores no válidos excluidos: <strong>2</strong></div></div>
+</div>
+
+<h3>Pantalla 3. Ranking de distritos</h3>
+<div class="mock">
+  <div class="bar">Distritos: calidad del aire y tráfico</div>
+  <div class="row"><div class="box">Contaminante: <strong>PM10 ▾</strong></div><div class="box">Días: <strong>Laborables ▾</strong></div><span class="btn">Actualizar</span></div>
+  <table>
+    <tr><th>#</th><th>Distrito</th><th>Contaminante medio</th><th>Tráfico medio</th></tr>
+    <tr><td>1</td><td>(distrito A)</td><td>▇▇▇▇▇</td><td>▇▇▇▇</td></tr>
+    <tr><td>2</td><td>(distrito B)</td><td>▇▇▇▇</td><td>▇▇▇▇▇</td></tr>
+    <tr><td>3</td><td>(distrito C)</td><td>▇▇▇</td><td>▇▇▇</td></tr>
+  </table>
+</div>
+</body>
+</html>
