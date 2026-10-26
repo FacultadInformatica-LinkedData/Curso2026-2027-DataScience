@@ -1,0 +1,49 @@
+SELECT DISTINCT ?property
+WHERE {
+  ?instance a <http://dbpedia.org/ontology/Politician> .
+  ?instance ?property ?value .
+}
+LIMIT 100
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?property
+WHERE {
+  ?instance a <http://dbpedia.org/ontology/Politician> .
+  ?instance ?property ?value .
+  FILTER(?property != rdf:type)
+}
+LIMIT 100
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?value
+WHERE {
+  ?instance a <http://dbpedia.org/ontology/Politician> .
+  ?instance ?property ?value .
+  FILTER(?property != rdf:type)
+}
+LIMIT 100
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?property ?value
+WHERE {
+  ?instance a <http://dbpedia.org/ontology/Politician> .
+  ?instance ?property ?value .
+  FILTER(?property != rdf:type)
+}
+ORDER BY ?property
+LIMIT 100
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?property (COUNT(DISTINCT ?value) AS ?distinctValues)
+WHERE {
+  ?instance a <http://dbpedia.org/ontology/Politician> .
+  ?instance ?property ?value .
+  FILTER(?property != rdf:type)
+}
+GROUP BY ?property
+ORDER BY DESC(?distinctValues)
+LIMIT 100
