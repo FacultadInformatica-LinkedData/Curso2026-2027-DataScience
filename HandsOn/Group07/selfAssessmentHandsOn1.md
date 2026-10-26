@@ -1,6 +1,6 @@
 # Autoevaluación de la práctica 1
 
-**Grupo:** Group02 · **Proyecto:** AirMove Madrid
+**Grupo:** Group07 · **Proyecto:** AirMove Madrid
 
 ## Qué hemos hecho
 
@@ -25,7 +25,7 @@
 | Miembro | Tareas |
 |---|---|
 | Martina Vázquez | Búsqueda y selección de los datasets de calidad del aire(horarios y estaciones de control), descarga los CSV y comprueba R1 y R2 |
-| Naia Loriente | Gestión del GitHub(fork, commits y pull request), organización de HandsOn Group02 y README |
+| Naia Loriente | Gestión del GitHub(fork, commits y pull request), organización de HandsOn Group07 y README |
 | Aya El Hadari | Búsqueda y selección de los datasets de tráfico(histórico y ubicación de los puntos de medida), preparación de la muestra del histórico y descripción de sus campos  |
 | Alejandra Calle | Redacción de "datasetRequirements.html": análisis de R1 a R6, identificación de licencias y de las entidades enlazables con otros datasets |
 | Mar Salinas | Redacción de "applicationRequirements.html": usuarios, requisitos funcionales y no funcionales, preguntas de ejemplo y mock-ups de la interfaz |
