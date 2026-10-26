@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Ciudad",
+  "@id":"https://ejemplo.org/recursos/Madrid",
+  "ciudad": "Madrid",
+  "población": 3527924,
+  "país": {
+    "@type": "País",
+	"@id":"https://ejemplo.org/recursos/España",
+    "nombre": "España"
+  },
+  "universidades": [
+    {
+      "@type": "Universidad",
+	  "@id":"https://ejemplo.org/recursos/UPM",
+      "nombre": "Universidad Politécnica de Madrid",
+      "acronym": "UPM"
+    },
+    {
+      "@type": "Universidad",
+	  "@id":"https://ejemplo.org/recursos/UCM",
+      "nombre": "Universidad Complutense de Madrid",
+      "acronym": "UCM"
+    }
+  ]
+}
+		
+		
+		
