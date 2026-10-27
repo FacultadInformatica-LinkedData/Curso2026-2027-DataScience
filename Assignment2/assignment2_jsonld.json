@@ -1,0 +1,25 @@
+{
+  "@context":"https://schema.org",
+  "@type":"City",
+  "@id":"https://ejemplo.org/recursos/Madrid",
+  "ciudad":"Madrid",
+  "habitantes":"3.500.000",
+  "pais":{
+    "@type":"Country",
+    "@id":"https://ejemplo.org/recursos/España",
+    "nombre":"España"
+  },
+  
+  "universidades":[
+    {
+    "@type":"University",
+    "@id":"https://ejemplo.org/recursos/UPM",
+    "nombre":"Universidad Politecnica de Madrid"
+  },
+    {
+    "@type":"University",
+    "@id":"https://ejemplo.org/recursos/España",
+    "nombre":"España"
+  }
+  ]
+}
