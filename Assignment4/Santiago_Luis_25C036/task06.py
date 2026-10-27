@@ -64,30 +64,37 @@ English: Reproduce the taxonomy of classes shown in the diagram (`Assignment4/co
 
 """
 
+# Definición de la clase Person
 g.add((ontology.Person, RDF.type, RDFS.Class))
 g.add((ontology.Person, RDFS.label, Literal("Person", datatype=XSD.string)))
 
-
+# Definición de la clase Professor y subclase de Person
 g.add((ontology.Professor, RDF.type, RDFS.Class))
 g.add((ontology.Professor, RDFS.label, Literal("Professor", datatype=XSD.string)))
 g.add((ontology.Professor, RDFS.subClassOf, ontology.Person))
 
+# Definición de la clase FullProfessor y subclase de Professor
 g.add((ontology.FullProfessor, RDF.type, RDFS.Class))
 g.add((ontology.FullProfessor, RDFS.label, Literal("FullProfessor", datatype=XSD.string)))
 g.add((ontology.FullProfessor, RDFS.subClassOf, ontology.Professor))
 
-g.add((ontology.AssociateProfessor, RDF.type, RDFS.Class))
-g.add((ontology.AssociateProfessor, RDFS.label, Literal("AssociateProfessor", datatype=XSD.string)))
-g.add((ontology.AssociateProfessor, RDFS.subClassOf, ontology.Professor))
-
+# Definición de la clase AssistantProfessor y subclase de Professor
 g.add((ontology.AssistantProfessor, RDF.type, RDFS.Class))
 g.add((ontology.AssistantProfessor, RDFS.label, Literal("AssistantProfessor", datatype=XSD.string)))
 g.add((ontology.AssistantProfessor, RDFS.subClassOf, ontology.Professor))
 
+# Definición de la clase AssociateProfessor y subclase de Professor
+g.add((ontology.AssociateProfessor, RDF.type, RDFS.Class))
+g.add((ontology.AssociateProfessor, RDFS.label, Literal("AssociateProfessor", datatype=XSD.string)))
+g.add((ontology.AssociateProfessor, RDFS.subClassOf, ontology.Professor))
+
+# Definición de la clase InterimAssociateProfessor y subclase de AssociateProfessor
 g.add((ontology.InterimAssociateProfessor, RDF.type, RDFS.Class))
 g.add((ontology.InterimAssociateProfessor, RDFS.label, Literal("InterimAssociateProfessor", datatype=XSD.string)))
 g.add((ontology.InterimAssociateProfessor, RDFS.subClassOf, ontology.AssociateProfessor))
 
+# Validation: Do not remove
+r.validate_task_06_01(g)
 
 
 for s, p, o in g:
@@ -103,6 +110,7 @@ Spanish: Crea la clase ontology:University.
 English: Create the ontology:University class.
 """
 
+# Declaración de la clase University
 g.add((ontology.University, RDF.type, RDFS.Class))
 g.add((ontology.University, RDFS.label, Literal("University", datatype=XSD.string)))
 
@@ -120,26 +128,29 @@ English: Add the properties shown in the previous diagram. Add labels for each o
 
 """
 
+# Propiedad hasName
 g.add((ontology.hasName, RDF.type, RDF.Property))
 g.add((ontology.hasName, RDFS.label, Literal("hasName", datatype=XSD.string)))
 g.add((ontology.hasName, RDFS.domain, ontology.Person))
 g.add((ontology.hasName, RDFS.range, RDFS.Literal))
 
+# Propiedad hasColleague
 g.add((ontology.hasColleague, RDF.type, RDF.Property))
 g.add((ontology.hasColleague, RDFS.label, Literal("hasColleague", datatype=XSD.string)))
 g.add((ontology.hasColleague, RDFS.domain, ontology.Person))
 g.add((ontology.hasColleague, RDFS.range, ontology.Person))
 
+# Propiedad hasHomePage
 g.add((ontology.hasHomePage, RDF.type, RDF.Property))
 g.add((ontology.hasHomePage, RDFS.label, Literal("hasHomePage", datatype=XSD.string)))
 g.add((ontology.hasHomePage, RDFS.domain, ontology.FullProfessor))
 g.add((ontology.hasHomePage, RDFS.range, RDFS.Literal))
 
+# Propiedad affiliatedWith
 g.add((ontology.affiliatedWith, RDF.type, RDF.Property))
 g.add((ontology.affiliatedWith, RDFS.label, Literal("affiliatedWith", datatype=XSD.string)))
 g.add((ontology.affiliatedWith, RDFS.domain, ontology.Person))
 g.add((ontology.affiliatedWith, RDFS.range, ontology.University))
-
 for s, p, o in g:
     print(s, p, o)
 
@@ -153,20 +164,22 @@ Spanish: Crea los individuos que aparecen en el diagrama, en la sección «Datos
 English: Create the individuals shown in the diagram under "Datos". Link them with the same relationships shown in the diagram."
 """
 
+# Individuo Raul: tipo, página web y colega
+g.add((person.Raul, RDF.type, ontology.FullProfessor))
+g.add((person.Raul, ontology.hasHomePage, Literal("http://oeg.fi.upm.es", datatype=XSD.string)))
+g.add((person.Raul, ontology.hasColleague, person.Juan))
+
+# Individuo Juan: tipo, nombre completo y colega
+g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
+g.add((person.Juan, ontology.hasName, Literal("Juan Cano de Benito", datatype=XSD.string)))
+g.add((person.Juan, ontology.hasColleague, person.Sven))
+
+# Creamos el Namespace university que no creamos en el 6.0
 university = Namespace("http://oeg.fi.upm.es/resource/university/")
 g.bind("university", university)
 
-g.add((person.Raul, RDF.type, ontology.FullProfessor))
-g.add((person.Raul, RDFS.label, Literal("Raúl", datatype=XSD.string)))
-g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
-
-g.add((person.Raul, ontology.hasColleague, person.Juan))
-g.add((person.Juan, ontology.hasColleague, person.Sven))
-
+# Individuo Sven: afiliación con Mannheim
 g.add((person.Sven, ontology.affiliatedWith, university.Mannheim))
-
-g.add((person.Raul, ontology.hasHomePage, Literal("http://oeg.fi.upm.es", datatype=XSD.string)))
-g.add((person.Juan, ontology.hasName, Literal("Juan Cano de Benito", datatype=XSD.string)))
 
 
 for s, p, o in g:
@@ -183,12 +196,13 @@ English: Add to the individual person:Juan the email address (juan.cano@upm.es),
 
 """
 
-foaf = Namespace("http://xmlns.com/foaf/0.1/")
-g.bind("foaf", foaf)
+# Namespace manual de vCard v3.0 (utilizado en el ejemplo 4)
+vcard = Namespace("http://www.w3.org/2001/vcard-rdf/3.0#")
 
-g.add((person.Juan, foaf.mbox, Literal("juan.cano@upm.es", datatype=XSD.string)))
-g.add((person.Juan, foaf.givenName, Literal("Juan", datatype=XSD.string)))
-g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.string)))
+# Añadir email, given name y family name a Juan
+g.add((person.Juan, vcard.EMAIL, Literal("juan.cano@upm.es", datatype=XSD.string)))
+g.add((person.Juan, vcard.Given, Literal("Juan", datatype=XSD.string)))
+g.add((person.Juan, vcard.Family, Literal("Cano de Benito", datatype=XSD.string)))
 
 for s, p, o in g:
     print(s, p, o)
