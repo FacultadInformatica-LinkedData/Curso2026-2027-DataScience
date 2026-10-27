@@ -202,7 +202,7 @@ foaf = Namespace("http://xmlns.com/foaf/0.1/")
 g.bind("foaf", foaf)
 
 #TODO
-g.add((person.Juan, foaf.email, Literal("juan.cano@upm.es", datatype=XSD.string)))
+g.add((person.Juan, foaf.mbox, Literal("juan.cano@upm.es", datatype=XSD.string)))
 g.add((person.Juan, foaf.givenName, Literal("Juan", datatype=XSD.string)))
 g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.string)))
 

@@ -60,6 +60,7 @@ English: Repeat the same exercise in SPARQL, returning the variables ?c (class) 
 query = """ SELECT ?c ?sc WHERE {
   ?c rdf:type rdfs:Class .
   OPTIONAL { ?c rdfs:subClassOf ?sc }
+
 }
 """
 
@@ -140,9 +141,11 @@ English: List the name and type of those who know Curry (in SPARQL only). Use na
 
 query =  """
 PREFIX ns:  <http://oeg.fi.upm.es/def/people#>
-select ?name ?type WHERE{
-  ?name ns:knows ns:Rocky.
-  ?name rdf:type ?type.
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?name ?type WHERE {
+  ?x ns:knows ns:Curry .
+  ?x rdfs:label ?name .
+  ?x a ?type .
 }
 """
 
@@ -163,19 +166,16 @@ English: List the name of those entities who have a colleague with a dog, or tha
 #TODO
 
 query =  """
-prefix ns: <http://oeg.fi.upm.es/def/people#>
-select ?name  WHERE{
-  {
-    ?name ns:hasColleague ?colleague.
-    ?colleague ns:ownsPet ?dog.
-
-  }
+PREFIX ns:  <http://oeg.fi.upm.es/def/people#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?name WHERE {
+  ?x rdfs:label ?name .
+  { ?x ns:hasColleague ?c1 .
+    ?c1 ns:ownsPet ?pet }
   UNION
-  {
-    ?name ns:hasColleague ?colleague.
-    ?colleague ns:hasColleague ?colleagueofcolleague.
-    ?colleagueofcolleague ns:ownsPet ?dog.
-  }
+  { ?x ns:hasColleague ?c1 .
+    ?c1 ns:hasColleague ?c2 .
+    ?c2 ns:ownsPet ?pet }
 }
 """
 
