@@ -172,7 +172,8 @@ g.add((person.Raul, RDFS.label, Literal("Raúl", datatype=XSD.string)))
 
 # Individuo Juan: tipo, nombre completo y colega
 g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
-g.add((person.Juan, ontology.hasName, Literal("Juan", datatype=XSD.string)))
+g.add((person.Juan, RDFS.label, Literal("Juan", datatype=XSD.string)))
+g.add((person.Juan, ontology.hasName, Literal("Juan Cano de Benito", datatype=XSD.string)))
 g.add((person.Juan, ontology.hasColleague, person.Sven))
 
 # Creamos el Namespace university que no creamos en el 6.0
@@ -202,9 +203,9 @@ English: Add to the individual person:Juan the email address (juan.cano@upm.es),
 foaf = Namespace("http://www.w3.org/2001/vcard-rdf/3.0#")
 
 # Añadir email, given name y family name a Juan
-g.add((person.Juan, foaf.EMAIL, Literal("juan.cano@upm.es", datatype=XSD.string)))
-g.add((person.Juan, foaf.Given, Literal("Juan", datatype=XSD.string)))
-g.add((person.Juan, foaf.Family, Literal("Cano de Benito", datatype=XSD.string)))
+g.add((person.Juan, foaf.mbox, Literal("juan.cano@upm.es", datatype=XSD.string)))
+g.add((person.Juan, foaf.givenName, Literal("Juan", datatype=XSD.string)))
+g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.string)))
 
 for s, p, o in g:
     print(s, p, o)
