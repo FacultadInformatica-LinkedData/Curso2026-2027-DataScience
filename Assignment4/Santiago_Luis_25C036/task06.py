@@ -157,6 +157,7 @@ university = Namespace("http://oeg.fi.upm.es/resource/university/")
 g.bind("university", university)
 
 g.add((person.Raul, RDF.type, ontology.FullProfessor))
+g.add((person.Raul, RDFS.label, Literal("Raúl", datatype=XSD.string)))
 g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
 
 g.add((person.Raul, ontology.hasColleague, person.Juan))
