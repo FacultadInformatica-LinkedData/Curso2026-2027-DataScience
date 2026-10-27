@@ -200,7 +200,8 @@ English: Add to the individual person:Juan the email address (juan.cano@upm.es),
 """
 
 # Namespace manual de vCard v3.0 (utilizado en el ejemplo 4)
-foaf = Namespace("http://www.w3.org/2001/vcard-rdf/3.0#")
+foaf = Namespace("http://xmlns.com/foaf/0.1/")
+g.bind("foaf", foaf)
 
 # Añadir email, given name y family name a Juan
 g.add((person.Juan, foaf.mbox, Literal("juan.cano@upm.es", datatype=XSD.string)))
