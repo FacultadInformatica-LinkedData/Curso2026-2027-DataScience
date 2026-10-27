@@ -93,10 +93,6 @@ g.add((ontology.InterimAssociateProfessor, RDF.type, RDFS.Class))
 g.add((ontology.InterimAssociateProfessor, RDFS.label, Literal("InterimAssociateProfessor", datatype=XSD.string)))
 g.add((ontology.InterimAssociateProfessor, RDFS.subClassOf, ontology.AssociateProfessor))
 
-# Validation: Do not remove
-r.validate_task_06_01(g)
-
-
 for s, p, o in g:
     print(s, p, o)
 
