@@ -168,6 +168,7 @@ English: Create the individuals shown in the diagram under "Datos". Link them wi
 g.add((person.Raul, RDF.type, ontology.FullProfessor))
 g.add((person.Raul, ontology.hasHomePage, Literal("http://oeg.fi.upm.es", datatype=XSD.string)))
 g.add((person.Raul, ontology.hasColleague, person.Juan))
+g.add((person.Raul, RDFS.label, Literal("Raúl", datatype=XSD.string)))
 
 # Individuo Juan: tipo, nombre completo y colega
 g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
@@ -180,6 +181,7 @@ g.bind("university", university)
 
 # Individuo Sven: afiliación con Mannheim
 g.add((person.Sven, ontology.affiliatedWith, university.Mannheim))
+g.add((person.Sven, RDFS.label, Literal("Sven", datatype=XSD.string)))
 
 
 for s, p, o in g:
