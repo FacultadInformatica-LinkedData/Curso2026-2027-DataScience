@@ -14,10 +14,10 @@
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
-
+ 
 ab:District a owl:Class ;
     rdfs:label "District"@en ;
-    rdfs:comment "Administrative district of the city of València."@en .
+    rdfs:comment "Administrative district of the city of València. This class is intended to be linked to external entities, for example the corresponding Wikidata items."@en .    
 
 ab:DistrictGeometry a owl:Class ;
     rdfs:label "District geometry"@en ;
