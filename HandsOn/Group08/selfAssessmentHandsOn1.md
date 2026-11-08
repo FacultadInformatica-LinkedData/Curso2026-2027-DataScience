@@ -1,6 +1,6 @@
 **Nombre del Proyecto:** Aplicación de Gastronomía en Madrid
 
-**Grupo:** GROUP08
+**Grupo:** Group08
 
 **Miembros del grupo:** Yaoyao Ji, Jiamin Wang, Erika He, Siyue Chen, Xinru Wu
 
