@@ -146,30 +146,27 @@
             El dataset <code>mercados.csv</code> contiene información de los mercados municipales
             de Madrid. Cada fila representa un mercado e incluye su identificador, nombre,
             descripción, horario, servicios, transporte público, dirección, barrio, distrito,
-            código postal, coordenadas geográficas y datos de contacto. Estos datos permiten
+            código postal, coordenadas geográficas y datos de contacto. Estos datos nos permiten
             localizar los mercados en un mapa y relacionarlos con los barrios y distritos del
             dataset <code>Barrios.csv</code>.
         </p>
         <p>
-            La ficha del conjunto de datos del Portal de Datos Abiertos del Ayuntamiento de Madrid
-            indica que la red municipal está formada por 46 mercados y que se proporcionan datos
-            de dirección, contacto, horarios, transportes, servicios y coordenadas. El fichero CSV
-            analizado en este trabajo contiene 45 registros. Por tanto, existe una diferencia de
-            un registro entre la descripción general del portal y el fichero concreto utilizado;
-            se debe conservar esta observación y comprobar si hay una versión posterior del CSV.
+            En el Portal de Datos Abiertos del Ayuntamiento de Madrid pone que está formada por 
+            46 mercados (aunque solo aparecen 45) y que se proporcionan datos de dirección, contacto, 
+            horarios, transportes, servicios y coordenadas para su localización sobre plano. 
         </p>
 
         <h4>1.2. Características técnicas</h4>
         <table>
             <thead><tr><th>Aspecto</th><th>Valor</th></tr></thead>
             <tbody>
-                <tr><td>Número de registros</td><td>45 mercados en el CSV analizado</td></tr>
+                <tr><td>Número de registros</td><td>45 mercados</td></tr>
                 <tr><td>Número de columnas</td><td>32</td></tr>
                 <tr><td>Formato</td><td>CSV (separado por <code>;</code>)</td></tr>
                 <tr><td>Codificación detectada</td><td>Windows-1252 / compatible con ISO-8859-1; sin BOM UTF-8</td></tr>
-                <tr><td>Separador decimal</td><td>Punto (<code>.</code>) en las coordenadas; los códigos postales e identificadores son códigos, no cantidades</td></tr>
-                <tr><td>Valores nulos</td><td>308 celdas vacías de 1.440 (21,39 %), concentradas en varios campos opcionales o sin información</td></tr>
-                <tr><td>Duplicados exactos</td><td>No se han detectado (0 filas duplicadas)</td></tr>
+                <tr><td>Separador decimal</td><td>Punto (<code>.</code>) en las coordenadas</td></tr>
+                <tr><td>Valores nulos</td><td>308 celdas vacías de 1.440 (campos opcionales o sin información)</td></tr>
+                <tr><td>Duplicados exactos</td><td>0 filas duplicadas</td></tr>
                 <tr><td>Identificadores</td><td><code>PK</code>, <code>NOMBRE</code> y <code>CONTENT-URL</code> tienen 45 valores distintos cada uno</td></tr>
             </tbody>
         </table>
