@@ -238,3 +238,50 @@ ab:pollutantCode a owl:DatatypeProperty ;
     rdfs:comment "Code of the pollutant as written in the source column names, for example NO2."@en ;
     rdfs:domain ab:Pollutant ;
     rdfs:range xsd:string .
+
+# Tras pasar la ontología por OOPS! (https://oops.linkeddata.es/), 
+# detectó dos avisos (pitfalls), que hemos solucionado a continuación:
+
+# 1. P10: Missing disjointness.
+#    Hemos declarado que las clases principales son mutuamente 
+#    excluyentes usando owl:AllDisjointClasses, para asegurar que 
+#    un individuo no puede ser a la vez un Distrito y una Estación.
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ab:District ab:DistrictGeometry ab:MonitoringStation ab:AirQualityObservation ab:Pollutant ) .
+
+
+# 2. P13: Inverse relationships not explicitly declared.
+#    Hemos añadido explícitamente las propiedades inversas usando 
+#    owl:inverseOf para que el razonador sepa que, por ejemplo, si 
+#    una Estación pertenece a un Distrito, ese Distrito contiene 
+#    a esa Estación.
+
+
+ab:hasObservation a owl:ObjectProperty ;
+    rdfs:label "has observation"@en ;
+    rdfs:comment "Links a monitoring station to an observation that it recorded. Inverse of hasStation."@en ;
+    owl:inverseOf ab:hasStation ;
+    rdfs:domain ab:MonitoringStation ;
+    rdfs:range ab:AirQualityObservation .
+
+ab:hasMonitoringStation a owl:ObjectProperty ;
+    rdfs:label "has monitoring station"@en ;
+    rdfs:comment "Links a district to a monitoring station located in it. Inverse of belongsToDistrict."@en ;
+    owl:inverseOf ab:belongsToDistrict ;
+    rdfs:domain ab:District ;
+    rdfs:range ab:MonitoringStation .
+
+ab:isGeometryOf a owl:ObjectProperty ;
+    rdfs:label "is geometry of"@en ;
+    rdfs:comment "Links a geometry record to the district it describes. Inverse of hasGeometry."@en ;
+    owl:inverseOf ab:hasGeometry ;
+    rdfs:domain ab:DistrictGeometry ;
+    rdfs:range ab:District .
+
+ab:isMeasuredBy a owl:ObjectProperty ;
+    rdfs:label "is measured by"@en ;
+    rdfs:comment "Links a pollutant to a monitoring station that measures it. Inverse of measuresPollutant."@en ;
+    owl:inverseOf ab:measuresPollutant ;
+    rdfs:domain ab:Pollutant ;
+    rdfs:range ab:MonitoringStation .
