@@ -14,10 +14,10 @@ Durante esta entrega hemos trabajado con datos abiertos sobre la gastronomía y 
 
 
 ## 3. Archivos entregados
-
-1. analysis.html
-2. madrid-barrio.ttl
-3. madrid-barrio-example.ttl
+-  analysis.html
+-  madrid-barrio.ttl
+-  madrid-barrio-example.ttl
+-  selfAssessmentHandsOn2.md
     
 ## 4. Conclusión
 
