@@ -15,8 +15,9 @@ Durante esta entrega hemos trabajado con datos abiertos sobre la gastronomía y 
 
 ## 3. Archivos entregados
 -  analysis.html
--  madrid-barrio.ttl
--  madrid-barrio-example.ttl
+-  madrid-gastronomía.ttl
+-  madrid-barrios-example.ttl
+-  madrid-mercados-example.ttl
 -  selfAssessmentHandsOn2.md
     
 ## 4. Conclusión
