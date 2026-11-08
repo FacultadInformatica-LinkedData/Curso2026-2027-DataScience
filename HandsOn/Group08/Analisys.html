@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de los datasets</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 2em auto; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; }
+        h2 { color: #2980b9; margin-top: 2em; }
+        h3 { color: #483D8B; margin-top: 2em; }
+        h4 { color: #555; margin-top: 1.5em; }
+        table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        th, td { border: 1px solid #bdc3c7; padding: 8px; text-align: left; }
+        th { background-color: #ecf0f1; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+        .toc { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 1em 1.5em; margin: 1.5em 0; }
+        .toc ul { margin: .3em 0; }
+        .note { background: #fff8e1; border-left: 4px solid #f39c12; padding: .8em 1em; margin: 1em 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Análisis de los datasets</h1>
+
+    <!-- ÍNDICE -->
+    <nav class="toc">
+        <strong>Índice:</strong>
+        <ul>
+            <li><a href="#ds1">Dataset 1 — Barrios de Madrid</a></li>
+            <li><a href="#ds2">Dataset 2 — (pendiente)</a></li>
+            <li><a href="#ds3">Dataset 3 — (pendiente)</a></li>
+        </ul>
+    </nav>
+
+    <!-- DATASET 1: BARRIOS -->
+    <section id="ds1">
+        <h2>Dataset 1 — Barrios de Madrid (<code>Barrios.csv</code>)</h2>
+
+        <!-- ANÁLISIS DEL CONJUNTO DE DATOS -->
+        <h3>1. Análisis del conjunto de datos</h3>
+
+        <h4>1.1. Descripción general</h4>
+        <p>
+            El dataset <code>Barrios.csv</code> contiene información sobre los barrios
+            de la ciudad de Madrid, organizados por distritos. Cada fila representa un
+            barrio e incluye su código, nombre, distrito al que pertenece, número dentro
+            del distrito y superficie en metros cuadrados. Será usado posteriormente en
+            la funcionalidad del mapa.
+        </p>
+
+        <h4>1.2. Características técnicas</h4>
+        <table>
+            <thead><tr><th>Aspecto</th><th>Valor</th></tr></thead>
+            <tbody>
+                <tr><td>Número de registros</td><td>~130 barrios</td></tr>
+                <tr><td>Número de columnas</td><td>10</td></tr>
+                <tr><td>Formato</td><td>CSV (separado por <code>;</code>)</td></tr>
+                <tr><td>Codificación</td><td>UTF-8 con BOM</td></tr>
+                <tr><td>Separador decimal</td><td>Coma (<code>,</code>) — formato español</td></tr>
+                <tr><td>Valores nulos</td><td>No se han detectado</td></tr>
+                <tr><td>Duplicados</td><td>No se han detectado duplicados exactos</td></tr>
+            </tbody>
+        </table>
+
+        <h4>1.3. Esquema de columnas</h4>
+        <table>
+            <thead>
+                <tr><th>Columna</th><th>Tipo</th><th>Descripción</th><th>Rango / Ejemplo</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>CODDIS</code></td><td>Entero</td><td>Código del distrito</td><td>1 – 21</td></tr>
+                <tr><td><code>NOMDIS</code></td><td>Texto</td><td>Nombre del distrito</td><td>"Centro", "Villaverde"…</td></tr>
+                <tr><td><code>COD_BAR</code></td><td>Entero</td><td>Código del barrio (3 dígitos)</td><td>011, 171, 211…</td></tr>
+                <tr><td><code>NOMBRE</code></td><td>Texto</td><td>Nombre oficial del barrio</td><td>"Sol", "Palacio"…</td></tr>
+                <tr><td><code>COD_DIS_TX</code></td><td>Texto</td><td>Código de distrito con 2 dígitos</td><td>"01", "17"…</td></tr>
+                <tr><td><code>BARRIO_MAY</code></td><td>Texto</td><td>Nombre del barrio en mayúsculas (sin tildes)</td><td>"SOL", "ANGELES"…</td></tr>
+                <tr><td><code>COD_DISBAR</code></td><td>Entero</td><td>Código distrito + barrio</td><td>11, 171…</td></tr>
+                <tr><td><code>NUM_BAR</code></td><td>Entero</td><td>Número del barrio dentro del distrito</td><td>1 – 9</td></tr>
+                <tr><td><code>BARRIO_MT</code></td><td>Texto</td><td>Nombre del barrio con tildes en mayúsculas</td><td>"SOL", "ÁNGELES"…</td></tr>
+                <tr><td><code>AREA</code></td><td>Decimal</td><td>Superficie en metros cuadrados</td><td>248.882 – 187.583.248</td></tr>
+            </tbody>
+        </table>
+
+        <h4>1.4. Observaciones sobre la calidad de los datos</h4>
+        <ul>
+            <li><strong>Inconsistencia de tildes:</strong> <code>BARRIO_MAY</code> no lleva tildes ("ANGELES") mientras que <code>BARRIO_MT</code> sí ("ÁNGELES").</li>
+            <li><strong>Espacios dobles:</strong> aparecen valores como "PALOMERAS  BAJAS".</li>
+            <li><strong>AREA</strong> usa coma decimal y valores muy grandes (m²).</li>
+            <li><strong>COD_BAR</strong> a veces con ceros a la izquierda (024, 011) y a veces no (171).</li>
+        </ul>
+
+        <!-- ANÁLISIS DE LICENCIA -->
+        <h3>2. Análisis de licencia de la fuente de datos</h3>
+
+        <table>
+            <thead><tr><th>Aspecto</th><th>Valor</th></tr></thead>
+            <tbody>
+                <tr><td>Publicador</td><td>Dirección General de Planificación Estratégica del Ayuntamiento de Madrid</td></tr>
+                <tr><td>Portal</td><td><a href="https://datos.madrid.es/dataset/300496-0-barrios-madrid">datos.madrid.es</a></td></tr>
+                <tr><td>Rightsholder</td><td>Ayuntamiento de Madrid</td></tr>
+                <tr><td>Licencia original</td><td>Creative Commons Attribution 4.0 International (CC BY 4.0)</td></tr>
+                <tr><td>Fecha de publicación</td><td>02/03/2021</td></tr>
+                <tr><td>Condiciones de reutilización</td><td>Permite uso comercial y no comercial; obligatorio citar la fuente ("Origen de los datos: Ayuntamiento de Madrid") y no desnaturalizar el significado de la información</td></tr>
+                <tr><td>Licencia propuesta para el dataset generado</td><td>CC BY 4.0 (compatible con la original, permite derivados con atribución)</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ESTRATEGIA DE NOMBRADO -->
+        <h3>3. Estrategia de nombrado de recursos</h3>
+
+        <h4>3.1. Dominio base</h4>
+        <p><code>http://group08.linkeddata.es/</code></p>
+
+        <h4>3.2. Patrones de URI</h4>
+        <table>
+            <thead>
+                <tr><th>Recurso</th><th>Patrón de URI</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Namespace de la ontología</td><td><code>http://group08.linkeddata.es/ontology#</code></td><td><code>.../ontology#District</code></td></tr>
+                <tr><td>Instancias de distrito</td><td><code>http://group08.linkeddata.es/resource/distrito/{COD_DIS_TX}</code></td><td><code>.../resource/distrito/01</code></td></tr>
+                <tr><td>Instancias de barrio</td><td><code>http://group08.linkeddata.es/resource/barrio/{COD_BAR}</code></td><td><code>.../resource/barrio/016</code></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3.3. Content negotiation</h4>
+        <ul>
+            <li><code>text/turtle</code> por defecto.</li>
+            <li><code>application/rdf+xml</code> y <code>application/ld+json</code> como alternativas.</li>
+            <li>Redirección 303 hacia la representación correspondiente.</li>
+        </ul>
+
+    </section>
+
+
+    <!-- DATASET 2: HUECO -->
+
+    <section id="ds2">
+        <h2>Dataset 2 — (nombre del dataset)</h2>
+        <div class="note">
+            Pendiente de análisis. Rellenar las subsecciones:
+            <ul>
+                <li>1. Análisis del conjunto de datos (descripción, características técnicas, esquema de columnas, calidad)</li>
+                <li>2. Análisis de licencia de la fuente de datos</li>
+                <li>3. Estrategia de nombrado de recursos</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- DATASET 3: HUECO -->
+
+    <section id="ds3">
+        <h2>Dataset 3 — (nombre del dataset)</h2>
+        <div class="note">
+            Pendiente de análisis. Rellenar las subsecciones:
+            <ul>
+                <li>1. Análisis del conjunto de datos</li>
+                <li>2. Análisis de licencia de la fuente de datos</li>
+                <li>3. Estrategia de nombrado de recursos</li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+</html>
