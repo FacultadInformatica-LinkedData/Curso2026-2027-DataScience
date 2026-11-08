@@ -1,7 +1,3 @@
-# Ejemplos de mercados del CSV municipal de Madrid.
-# Los barrios se identifican con el mismo esquema de URI que en madrid-barrio-example.ttl.
-# Algunos barrios enlazados pueden no estar descritos en el archivo de ejemplo de barrios.
-
 @prefix barrio: <https://gastronomad.es/group08/resource/barrio/> .
 @prefix ex: <https://gastronomad.es/group08/ontology#> .
 @prefix mercado: <https://gastronomad.es/group08/resource/mercado/> .
