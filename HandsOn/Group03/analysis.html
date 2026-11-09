@@ -177,6 +177,13 @@
   <tr><td>Measurement</td><td><code>.../resource/Measurement/{station}-{magnitude}-{yyyy-mm-dd}-H{hh}</code></td><td>Station, magnitude, day and hour (unique, see section 1.2)</td><td><code>.../resource/Measurement/28079004-6-2026-09-30-H01</code></td></tr>
 </table>
 
+<p>
+  <strong>Note on pollutant identifiers.</strong> Dataset A names the pollutants (NO2, SO2, CO, PM10, PM2.5, O3, BTX) and dataset B identifies them only by magnitude code.
+  For a code, the pollutant individual is the one whose name corresponds to that code (see section 1.3); for example code 6 corresponds to <code>Pollutant/CO</code>.
+  Codes 7, 8 and 12 will get their individuals when their meaning is confirmed. Codes 20, 30 and 35 appear in the same stations as BTX, which in dataset A is a single group,
+  so each of these codes will need its own individual once its meaning is confirmed; <code>Pollutant/BTX</code> is only used for the column of dataset A.
+</p>
+
 <h3>3.3 Content negotiation</h3>
 <p>
   The design for publication (a later assignment) is that the URI of an individual identifies the real-world thing and answers with a redirection
