@@ -6,6 +6,8 @@
 
 **Fecha:** 2026/10/26
 
+# Hands-On Assignment 1
+
 ## 1. ¿Qué hemos hecho en esta primera práctica?
 En este primer hands-on, nos hemos centrado en definir el alcance de nuestro proyecto y buscar los conjuntos de datos necesarios.
 Hemos elegido el tema: una aplicación para promover la gastronomía en Madrid, que más adelante añadiremos más funcionalidades como check-in, dejar más reseñas, buscar restaurantes según categorías, etc.
