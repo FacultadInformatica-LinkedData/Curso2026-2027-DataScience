@@ -26,7 +26,8 @@ El objetivo ha sido mejorar la calidad de los datos y facilitar su posterior tra
 
 -  Barrios-updated.csv
 -  mercados-updated.csv
--  Historial.json
+-  Barrios-historial.json
+-  mercados-historial.json
 -  selfAssessmentHandsOn3.md
     
 ## 4. Conclusión
