@@ -1,7 +1,12 @@
+**Nombre del Proyecto:** Aplicación de Gastronomía en Madrid
+
+**Grupo:** Group08
+
+**Miembros del grupo:** Yaoyao Ji, Jiamin Wang, Erika He, Siyue Chen, Xinru Wu
 
 # Autoevaluación – Hands-On Assignment 2
 
-## 1. ¿Qué hemos hecho en esta primera práctica?
+## 1. ¿Qué hemos hecho en esta segunda práctica?
 
 Durante esta entrega hemos trabajado con datos abiertos sobre la gastronomía y mercados en Madrid, aplicando los conceptos de RDF, OWL, naming strategy y serialización en Turtle. El objetivo es aprender a organizar e identificar los datos que hemos seleccionado mediante URIs, definiendo cómo se van a nombrar los recursos y cómo se podrá acceder a ellos en diferentes formatos. Así dejamos preparada la estructura para poder transformar nuestros datos a RDF, relacionarlos con otros datos.
 
