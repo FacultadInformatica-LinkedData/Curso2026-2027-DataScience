@@ -4,7 +4,7 @@
 
 **Miembros del grupo:** Yaoyao Ji, Jiamin Wang, Erika He, Siyue Chen, Xinru Wu
 
-# Autoevaluación – Hands-On Assignment 2
+# Hands-On Assignment 2
 
 ## 1. ¿Qué hemos hecho en esta segunda práctica?
 
