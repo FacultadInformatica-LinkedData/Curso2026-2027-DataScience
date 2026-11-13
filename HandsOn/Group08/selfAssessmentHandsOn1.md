@@ -1,7 +1,12 @@
 **Nombre del Proyecto:** Aplicación de Gastronomía en Madrid
-**Grupo:** GROUP08
+
+**Grupo:** Group08
+
 **Miembros del grupo:** Yaoyao Ji, Jiamin Wang, Erika He, Siyue Chen, Xinru Wu
+
 **Fecha:** 2026/10/26
+
+# Hands-On Assignment 1
 
 ## 1. ¿Qué hemos hecho en esta primera práctica?
 En este primer hands-on, nos hemos centrado en definir el alcance de nuestro proyecto y buscar los conjuntos de datos necesarios.
