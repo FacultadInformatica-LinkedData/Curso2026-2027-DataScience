@@ -9,8 +9,8 @@ Original file is located at
 # **Task 06: Modifying RDF(s)**
 """
 
-# !pip install rdflib
-# !pip install oeg-sw-class
+!pip install rdflib
+!pip install oeg-sw-class
 
 """Spanish: Importar la librería RDFLib
 
@@ -72,9 +72,7 @@ g.add((ontology.Person, RDF.type, RDFS.Class))
 g.add((ontology.Person, RDFS.label, Literal("Person", datatype=XSD.string)))
 
 #TODO
-# Clases
-g.add((ontology.Person, RDF.type, RDFS.Class))
-g.add((ontology.Person, RDFS.label, Literal("Person", datatype=XSD.string)))
+# Crear las clases y añadir sus etiquetas
 
 g.add((ontology.Professor, RDF.type, RDFS.Class))
 g.add((ontology.Professor, RDFS.label, Literal("Professor", datatype=XSD.string)))
@@ -91,11 +89,16 @@ g.add((ontology.AssociateProfessor, RDFS.label, Literal("AssociateProfessor", da
 g.add((ontology.InterimAssociateProfessor, RDF.type, RDFS.Class))
 g.add((ontology.InterimAssociateProfessor, RDFS.label, Literal("InterimAssociateProfessor", datatype=XSD.string)))
 
-# Jerarquía (subClassOf)
+# Crear las relaciones de subclase
+
 g.add((ontology.Professor, RDFS.subClassOf, ontology.Person))
+
 g.add((ontology.FullProfessor, RDFS.subClassOf, ontology.Professor))
+
 g.add((ontology.AssistantProfessor, RDFS.subClassOf, ontology.Professor))
+
 g.add((ontology.AssociateProfessor, RDFS.subClassOf, ontology.Professor))
+
 g.add((ontology.InterimAssociateProfessor, RDFS.subClassOf, ontology.AssociateProfessor))
 
 # Visualize the results
@@ -132,29 +135,49 @@ English: Add the properties shown in the previous diagram. Add labels for each o
 """
 
 #TODO
-# hasName
+
+# Propiedad hasName
+
 g.add((ontology.hasName, RDF.type, RDF.Property))
+
 g.add((ontology.hasName, RDFS.label, Literal("hasName", datatype=XSD.string)))
+
 g.add((ontology.hasName, RDFS.domain, ontology.Person))
+
 g.add((ontology.hasName, RDFS.range, RDFS.Literal))
 
-# hasColleague
+# Propiedad hasColleague
+
 g.add((ontology.hasColleague, RDF.type, RDF.Property))
+
 g.add((ontology.hasColleague, RDFS.label, Literal("hasColleague", datatype=XSD.string)))
+
 g.add((ontology.hasColleague, RDFS.domain, ontology.Person))
+
 g.add((ontology.hasColleague, RDFS.range, ontology.Person))
 
-# hasHomePage
+
+# Propiedad hasHomePage
+
 g.add((ontology.hasHomePage, RDF.type, RDF.Property))
+
 g.add((ontology.hasHomePage, RDFS.label, Literal("hasHomePage", datatype=XSD.string)))
+
 g.add((ontology.hasHomePage, RDFS.domain, ontology.FullProfessor))
+
 g.add((ontology.hasHomePage, RDFS.range, RDFS.Literal))
 
-# affiliatedWith
-g.add((ontology.affiliatedWith, RDF.type, RDF.Property))
+
+# Propiedad affiliatedWith
+
+g.add((ontology.affiliatedWith, RDF.type,RDF.Property))
+
 g.add((ontology.affiliatedWith, RDFS.label, Literal("affiliatedWith", datatype=XSD.string)))
+
 g.add((ontology.affiliatedWith, RDFS.domain, ontology.Person))
+
 g.add((ontology.affiliatedWith, RDFS.range, ontology.University))
+
 
 # Visualize the results
 for s, p, o in g:
@@ -171,16 +194,45 @@ English: Create the individuals shown in the diagram under "Datos". Link them wi
 """
 
 #TODO
-# Crear individuos con sus tipos
-g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
-g.add((person.Raul, RDF.type, ontology.FullProfessor))
-g.add((person.Sven, RDF.type, ontology.InterimAssociateProfessor))
-g.add((organization.Mannheim, RDF.type, ontology.University))
 
-# Relaciones
+# Etiqueta de Raul
+g.add((person.Raul, RDFS.label, Literal("Raúl", datatype=XSD.string)))
+
+# Raul es FullProfessor
+g.add((person.Raul, RDF.type, ontology.FullProfessor))
+
+# Página web de Raul
+g.add((person.Raul, ontology.hasHomePage, Literal("http://oeg.fi.upm.es", datatype=XSD.string)))
+
+# Raul tiene como colega a Juan
 g.add((person.Raul, ontology.hasColleague, person.Juan))
+
+
+# Etiqueta de Juan
+g.add((person.Juan, RDFS.label, Literal("Juan", datatype=XSD.string)))
+
+# Juan es AssistantProfessor
+g.add((person.Juan, RDF.type, ontology.AssistantProfessor))
+
+# Juan tiene como nombre Juan Cano de Benito
+g.add((person.Juan, ontology.hasName, Literal("Juan Cano de Benito", datatype=XSD.string)))
+
+# Juan tiene como colega a Sven
 g.add((person.Juan, ontology.hasColleague, person.Sven))
-g.add((person.Sven, ontology.affiliatedWith, organization.Mannheim))
+
+
+# Etiqueta de Sven
+g.add((person.Sven, RDFS.label, Literal("Sven", datatype=XSD.string)))
+
+
+
+# Sven afiliado a la Universidad de Mannheim
+# Tenemos que crear el Namespace de university, pues en el task 6.0 no hemos creado el de university
+university = Namespace("http://oeg.fi.upm.es/resource/university/")
+g.bind("university", university)
+
+g.add((person.Sven, ontology.affiliatedWith, university.Mannheim))
+
 
 # Visualize the results
 for s, p, o in g:
@@ -201,7 +253,15 @@ foaf = Namespace("http://xmlns.com/foaf/0.1/")
 g.bind("foaf", foaf)
 
 #TODO
-g.add((person.Juan, ontology.hasName, Literal("Juan Cano de Benito", datatype=XSD.string)))
+
+# Añadir el nombre de Juan
+g.add((person.Juan, foaf.givenName, Literal("Juan", datatype=XSD.string)))
+
+# Añadir los apellidos de Juan
+g.add((person.Juan, foaf.familyName, Literal("Cano de Benito", datatype=XSD.string)))
+
+# Añadir el correo electrónico de Juan
+g.add((person.Juan, foaf.mbox, Literal("juan.cano@upm.es", datatype=XSD.string)))
 
 # Visualize the results
 for s, p, o in g:
@@ -218,8 +278,13 @@ English:  Add that Juan and Raúl are affiliated (affiliatedWith) with the unive
 """
 
 #TODO
-g.add((person.Juan, ontology.affiliatedWith, organization.UPM))
-g.add((person.Raul, ontology.affiliatedWith, organization.UPM))
+# Juan está afiliado a la UPM
+g.add((person.Juan, ontology.affiliatedWith, university.UPM))
+
+# Raul está afiliado a la UPM
+g.add((person.Raul, ontology.affiliatedWith, university.UPM))
+
+# Sven es InterimAssociateProfessor
 g.add((person.Sven, RDF.type, ontology.InterimAssociateProfessor))
 
 # Visualize the results
@@ -237,8 +302,13 @@ English:  Both university:UPM and university:Mannheim are ontology:University ty
 """
 
 #TODO
-g.add((organization.UPM, RDF.type, ontology.University))
-g.add((organization.Mannheim, RDF.type, ontology.University))
+
+# UPM es una University
+g.add((university.UPM, RDF.type, ontology.University))
+
+# Mannheim es una University
+g.add((university.Mannheim, RDF.type, ontology.University))
+
 
 # Visualize the results
 for s, p, o in g:
