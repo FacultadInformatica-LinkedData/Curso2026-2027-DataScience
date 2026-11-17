@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hands-On 2: Dataset Analysis, Licensing &amp; Resource Naming Strategy</title>
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --secondary: #2b5b84;
+      --accent: #c0392b;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
+      --border: #dee2e6;
+      --code-bg: #f1f3f5;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 2.5rem 2rem;
+      border-bottom: 4px solid var(--accent);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.9rem;
+    }
+    header p {
+      margin: 0.25rem 0;
+      opacity: 0.92;
+      font-size: 0.98rem;
+    }
+    main {
+      max-width: 1140px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 3rem 1.5rem;
+    }
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+    }
+    h3 {
+      color: var(--secondary);
+      margin-top: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      background-color: var(--code-bg);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+      color: #b02a37;
+    }
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 1.5rem 0;
+    }
+    .stat-card {
+      background: #f8fafc;
+      border-left: 4px solid var(--secondary);
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+    }
+    .stat-card .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: #5a6a7e;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: #e9ecef;
+      color: #343a40;
+    }
+    .badge-keep { background: #d1e7dd; color: #0f5132; }
+    .badge-drop { background: #f8d7da; color: #842029; }
+    .callout {
+      background-color: #eef5fc;
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6c757d;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hands-On 2: Linked Data Generation Analysis</h1>
+    <p><strong>Dataset:</strong> Relaci&oacute;n de monumentos de Castilla y Le&oacute;n (<code>relacion-monumentos.csv</code>)</p>
+    <p><strong>Source Portal:</strong> <a href="https://datosabiertos.jcyl.es/web/jcyl/set/es/cultura-ocio/monumentos/1284325843131" style="color:#ffd166;">Portal de Datos Abiertos de la Junta de Castilla y Le&oacute;n</a></p>
+    <p><strong>Group:</strong> Group10 &mdash; Semantic Web &amp; Linked Data</p>
+  </header>
+
+  <main>
+    <!-- SECTION 1: DATASET ANALYSIS -->
+    <section id="dataset-analysis">
+      <h2>1. Dataset Analysis</h2>
+      <p>
+        The selected dataset, <em>Relaci&oacute;n de monumentos de Castilla y Le&oacute;n</em>, provides a structured inventory of cultural heritage monuments across the nine provinces of the Autonomous Community of Castilla y Le&oacute;n (Spain), originally compiled for the regional Tourism Portal.
+      </p>
+
+      <div class="grid-cards">
+        <div class="stat-card">
+          <div class="value">1,378</div>
+          <div class="label">Total Rows (Records)</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">1,374</div>
+          <div class="label">Unique Monuments (IDs)</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">18</div>
+          <div class="label">Schema Attributes (Columns)</div>
+        </div>
+        <div class="stat-card">
+          <div class="value">UTF-8 BOM</div>
+          <div class="label">Encoding (<code>;</code> Delimiter)</div>
+        </div>
+      </div>
+
+      <h3>1.1 Schema Analysis</h3>
+      <p>
+        The CSV file uses a semicolon (<code>;</code>) separator, UTF-8 encoding with Byte Order Mark (<code>utf-8-sig</code>), and double quotes to enclose multi-line HTML text fields. Table 1 summarizes the 18 attributes, their inferred types, completeness, cardinality, and modeling decisions for RDF conversion.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Raw Type</th>
+            <th>Non-Null (Missing %)</th>
+            <th>Unique Values</th>
+            <th>Sample Values / Range</th>
+            <th>RDF Mapping Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>identificador</code></td>
+            <td>Integer</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,374</td>
+            <td><code>23778</code> &ndash; <code>200849</code></td>
+            <td><span class="badge badge-keep">Keep</span> Primary key for Monument URI &amp; <code>mon:identifier</code></td>
+          </tr>
+          <tr>
+            <td><code>nombre</code></td>
+            <td>String</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,150</td>
+            <td><code>"Catedral de &Aacute;vila"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Maps to <code>mon:name</code> &amp; <code>rdfs:label</code></td>
+          </tr>
+          <tr>
+            <td><code>tipoMonumento</code></td>
+            <td>String</td>
+            <td>1,378 (0.0%)</td>
+            <td>25</td>
+            <td><code>"Catedrales"</code>, <code>"Castillos"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:hasMonumentType</code></td>
+          </tr>
+          <tr>
+            <td><code>identificadorBienInteresCultural</code></td>
+            <td>String</td>
+            <td>1,112 (19.3%)</td>
+            <td>1,107</td>
+            <td><code>"264"</code>, <code>"9598;9618"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Split by <code>;</code> &rarr; <code>mon:bicIdentifier</code></td>
+          </tr>
+          <tr>
+            <td><code>calle</code></td>
+            <td>String</td>
+            <td>886 (35.7%)</td>
+            <td>777</td>
+            <td><code>"Pza. de la Catedral s/n"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Maps to <code>mon:streetAddress</code></td>
+          </tr>
+          <tr>
+            <td><code>clasificacion</code></td>
+            <td>String</td>
+            <td>1,185 (14.0%)</td>
+            <td>10</td>
+            <td><code>"Arquitectura Religiosa"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:hasClassification</code></td>
+          </tr>
+          <tr>
+            <td><code>tipoConstruccion</code></td>
+            <td>String</td>
+            <td>1,260 (8.6%)</td>
+            <td>49</td>
+            <td><code>"Catedral"</code>, <code>"Iglesia"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:hasConstructionType</code></td>
+          </tr>
+          <tr>
+            <td><code>codigoPostal</code></td>
+            <td>Numeric / String</td>
+            <td>1,274 (7.5%)</td>
+            <td>629</td>
+            <td><code>5001</code> (&rarr; <code>"05001"</code>) &ndash; <code>49830</code></td>
+            <td><span class="badge badge-keep">Keep</span> Zero-pad to 5 chars &rarr; <code>mon:postalCode</code></td>
+          </tr>
+          <tr>
+            <td><code>Descripcion</code></td>
+            <td>HTML String</td>
+            <td>1,368 (0.7%)</td>
+            <td>1,364</td>
+            <td><code>"&lt;p align="justify"&gt;..."</code></td>
+            <td><span class="badge badge-keep">Keep</span> Strip HTML tags/entities &rarr; <code>mon:description</code></td>
+          </tr>
+          <tr>
+            <td><code>periodoHistorico</code></td>
+            <td>String</td>
+            <td>1,260 (8.6%)</td>
+            <td>40</td>
+            <td><code>"Edad Media"</code>, <code>"Edad Moderna,Edad Media"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Split by <code>,</code> &rarr; <code>mon:hasHistoricalPeriod</code></td>
+          </tr>
+          <tr>
+            <td><code>coordenadas_latitud</code></td>
+            <td>Float (WGS84)</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,372</td>
+            <td><code>40.152481</code> &ndash; <code>43.160687</code></td>
+            <td><span class="badge badge-keep">Keep</span> Maps to <code>mon:latitude</code> (<code>xsd:decimal</code>)</td>
+          </tr>
+          <tr>
+            <td><code>coordenadas_longitud</code></td>
+            <td>Float (WGS84)</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,372</td>
+            <td><code>-6.925360</code> &ndash; <code>-1.856444</code></td>
+            <td><span class="badge badge-keep">Keep</span> Maps to <code>mon:longitude</code> (<code>xsd:decimal</code>)</td>
+          </tr>
+          <tr>
+            <td><code>poblacion_provincia</code></td>
+            <td>String</td>
+            <td>1,377 (0.1%)</td>
+            <td>9</td>
+            <td><code>"&Aacute;vila"</code>, <code>"Burgos"</code>, <code>"Le&oacute;n"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:locatedInProvince</code></td>
+          </tr>
+          <tr>
+            <td><code>poblacion_municipio</code></td>
+            <td>String</td>
+            <td>1,377 (0.1%)</td>
+            <td>590</td>
+            <td><code>"&Aacute;vila"</code>, <code>"Astorga"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:locatedInMunicipality</code></td>
+          </tr>
+          <tr>
+            <td><code>poblacion_localidad</code></td>
+            <td>String</td>
+            <td>1,377 (0.1%)</td>
+            <td>752</td>
+            <td><code>"&Aacute;vila"</code>, <code>"Astorga"</code></td>
+            <td><span class="badge badge-keep">Keep</span> Object property <code>mon:locatedInLocality</code></td>
+          </tr>
+          <tr>
+            <td><code>pto_geolocalizado</code></td>
+            <td>String</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,372</td>
+            <td><code>"40.655814, -4.697039"</code></td>
+            <td><span class="badge badge-drop">Omit</span> Redundant concatenation of lat/long</td>
+          </tr>
+          <tr>
+            <td><code>poblacion</code></td>
+            <td>JSON String</td>
+            <td>1,377 (0.1%)</td>
+            <td>754</td>
+            <td><code>{"provincia": "&Aacute;vila", ...}</code></td>
+            <td><span class="badge badge-drop">Omit</span> Redundant JSON serialization of location columns</td>
+          </tr>
+          <tr>
+            <td><code>coordenadas</code></td>
+            <td>JSON String</td>
+            <td>1,378 (0.0%)</td>
+            <td>1,372</td>
+            <td><code>{"latitud": "40.655814", ...}</code></td>
+            <td><span class="badge badge-drop">Omit</span> Redundant JSON serialization of coordinate columns</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>1.2 Data Value Distributions &amp; Statistical Summary</h3>
+      <ul>
+        <li><strong>Geographic Bounding Box:</strong> Latitude spans from <code>40.152481&deg;N</code> (southern &Aacute;vila/Salamanca) to <code>43.160687&deg;N</code> (northern Le&oacute;n/Palencia/Burgos), with mean <code>41.750747&deg;</code> (SD <code>0.720572&deg;</code>). Longitude spans from <code>-6.925360&deg;W</code> to <code>-1.856444&deg;W</code>, with mean <code>-4.531362&deg;</code> (SD <code>1.119373&deg;</code>).</li>
+        <li><strong>Provincial Distribution (<code>poblacion_provincia</code>):</strong> Burgos (250 monuments), Valladolid (167), Soria (155), Le&oacute;n (151), Palencia (149), Segovia (136), Salamanca (132), &Aacute;vila (121), and Zamora (116). One archaeological site (<em>Castro de la Loma</em>, ID <code>200849</code>) lacks administrative location fields despite having valid coordinates (<code>42.800344, -4.733072</code>, located in Palencia).</li>
+        <li><strong>Monument Types (<code>tipoMonumento</code>, 25 categories):</strong> Dominated by <em>Iglesias y Ermitas</em> (609; 44.2%), <em>Castillos</em> (173; 12.6%), <em>Yacimientos arqueol&oacute;gicos</em> (144; 10.4%), <em>Palacios</em> (109; 7.9%), and <em>Monasterios</em> (109; 7.9%).</li>
+        <li><strong>Architectural Classifications (<code>clasificacion</code>, 10 categories):</strong> <em>Arquitectura Religiosa</em> (720), <em>Arquitectura Civil</em> (253), <em>Yacimiento</em> (144), <em>Arquitectura Militar</em> (33), <em>Arquitectura Popular</em> (12), <em>Paraje Pintoresco</em> (8), <em>Conjunto Etnol&oacute;gico</em> (8), <em>Museo</em> (3), <em>Sitio Hist&oacute;rico</em> (2), and <em>Jard&iacute;n Hist&oacute;rico</em> (2).</li>
+        <li><strong>Historical Periods (<code>periodoHistorico</code>, 40 unique combinations):</strong> Most frequent values are <em>Edad Media</em> (494), <em>Edad Moderna</em> (400), <em>Edad Moderna,Edad Media</em> (187), <em>Romano</em> (47), and <em>Edad Contempor&aacute;nea</em> (39).</li>
+      </ul>
+
+      <h3>1.3 Data Quality Issues &amp; Preprocessing Rules</h3>
+      <div class="callout">
+        <strong>Key Findings for RML/RDF Transformation:</strong>
+        <ol>
+          <li><strong>Duplicate Monument Identifiers (4 pairs):</strong> Identifiers <code>25157</code> (<em>Monasterio Santa Mar&iacute;a Real de las Huelgas</em>), <code>25171</code> (<em>Monasterio de Santa Clara</em>), <code>25211</code> (<em>Palacio Real de la Granja de San Ildefonso</em>), and <code>25212</code> (<em>Palacio Real de Riofr&iacute;o</em>) appear twice because they belong to both <code>Reales Sitios</code> and <code>Monasterios</code>/<code>Palacios</code>. Mapping both rows to the same subject URI naturally merges their attributes and yields two <code>mon:hasMonumentType</code> triples.</li>
+          <li><strong>Multi-Valued Delimited Fields:</strong> <code>periodoHistorico</code> separates multiple periods with commas (e.g., <code>"Edad Moderna,Edad Media"</code>), while 8 records in <code>identificadorBienInteresCultural</code> separate multiple BIC codes with semicolons (e.g., <code>"9598;9618"</code> for <em>Catedrales de Salamanca</em>). These must be split into atomic values before generating triples.</li>
+          <li><strong>Missing Leading Zeros in Postal Codes:</strong> Because <code>codigoPostal</code> is stored numerically, codes for &Aacute;vila (<code>05xxx</code>) and Burgos (<code>09xxx</code>) appear as 4-digit integers (e.g., <code>5001</code>, <code>9003</code>). They must be left-padded with zeros to 5 characters (<code>"05001"</code>, <code>"09003"</code>) and typed as <code>xsd:string</code>. Two Burgos churches in Valpuesta (IDs <code>25443</code> and <code>25911</code>) carry &Aacute;lava border postal codes (<code>01426</code> and <code>01424</code>).</li>
+          <li><strong>HTML Markup &amp; Entities in <code>Descripcion</code>:</strong> Descriptions contain <code>&lt;p align="justify"&gt;</code> tags and HTML character entities (e.g., <code>&amp;aacute;</code>, <code>&amp;ntilde;</code>, <code>&amp;nbsp;</code>) that must be unescaped and stripped to clean UTF-8 text.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LICENSING ANALYSIS -->
+    <section id="licensing-analysis">
+      <h2>2. Licensing Analysis of the Data Source</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Metadata Aspect</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dataset Title</strong></td>
+            <td>Relaci&oacute;n de monumentos de Castilla y Le&oacute;n</td>
+          </tr>
+          <tr>
+            <td><strong>Publisher</strong></td>
+            <td>Junta de Castilla y Le&oacute;n &mdash; Portal de Datos Abiertos de la Junta de Castilla y Le&oacute;n (<code>https://datosabiertos.jcyl.es/</code>)</td>
+          </tr>
+          <tr>
+            <td><strong>Rightsholder / Content Responsible</strong></td>
+            <td>Direcci&oacute;n General de Patrimonio Cultural &mdash; Consejer&iacute;a de Cultura, Turismo y Deporte (Junta de Castilla y Le&oacute;n)</td>
+          </tr>
+          <tr>
+            <td><strong>Publication &amp; Update Frequency</strong></td>
+            <td>Initially published on May 27, 2014; updated daily from Monday to Friday</td>
+          </tr>
+          <tr>
+            <td><strong>Original Source License</strong></td>
+            <td><strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> &mdash; <em>Creative Commons Reconocimiento 4.0</em> (<a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a>)</td>
+          </tr>
+          <tr>
+            <td><strong>Selected License for Generated Dataset</strong></td>
+            <td><strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> (<a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a>)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2.1 Legal Compatibility &amp; Attribution Rationale</h3>
+      <p>
+        The original dataset is published under <strong>CC BY 4.0</strong>, which grants permission to copy, redistribute, remix, transform, and build upon the material for any purpose (including commercial applications and Semantic Web knowledge graph generation), under the condition that appropriate attribution is given to the original creator/rightsholder, a link to the license is provided, and modifications are indicated.
+      </p>
+      <p>
+        Consequently, the generated Linked Data dataset and lightweight ontology will also be released under <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong>. Retaining CC BY 4.0 guarantees full legal compatibility with the source terms of use, preserves the attribution chain to the <em>Direcci&oacute;n General de Patrimonio Cultural (Junta de Castilla y Le&oacute;n)</em> via <code>dcterms:creator</code> / <code>dcterms:source</code>, and enables unrestricted downstream reuse by third-party applications.
+      </p>
+    </section>
+
+    <!-- SECTION 3: RESOURCE NAMING STRATEGY -->
+    <section id="naming-strategy">
+      <h2>3. Resource Naming Strategy</h2>
+      <p>
+        Following W3C <em>Cool URIs for the Semantic Web</em> guidelines, our resource naming strategy uses HTTP URIs under a dedicated base domain, separating ontological terms (TBox) from instance data (ABox) and avoiding file extensions or implementation details in resource identifiers.
+      </p>
+
+      <h3>3.1 Base Domain &amp; Namespace Structure</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>URI Pattern</th>
+            <th>Strategy &amp; Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Base Domain</strong></td>
+            <td><code>http://www.monumentoscyl.es/</code></td>
+            <td>Clean, human-readable, domain-specific HTTP base URI independent of underlying server technology.</td>
+          </tr>
+          <tr>
+            <td><strong>Ontology URI (TBox)</strong></td>
+            <td><code>http://www.monumentoscyl.es/ontology/monuments#</code> (prefix <code>mon:</code>)</td>
+            <td><strong>Hash (<code>#</code>) URI pattern:</strong> Ideal for small-to-medium ontologies so that dereferencing any class or property retrieves the complete ontology schema in a single HTTP request.</td>
+          </tr>
+          <tr>
+            <td><strong>Instances URI (ABox)</strong></td>
+            <td><code>http://www.monumentoscyl.es/resource/&lt;type&gt;/&lt;id&gt;</code></td>
+            <td><strong>Slash (<code>/</code>) URI pattern:</strong> Ideal for large datasets (1,374+ monuments and hundreds of geographical entities) so clients can dereference individual entities without downloading the entire dataset.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 Ontology Term Naming Conventions (TBox)</h3>
+      <ul>
+        <li><strong>Classes (<code>owl:Class</code>):</strong> Singular nouns written in <code>UpperCamelCase</code> (PascalCase), using English names for global interoperability alongside bilingual <code>rdfs:label</code> annotations (<code>@en</code> and <code>@es</code>):
+          <code>mon:Monument</code>, <code>mon:MonumentType</code>, <code>mon:Classification</code>, <code>mon:ConstructionType</code>, <code>mon:HistoricalPeriod</code>, <code>mon:Province</code>, <code>mon:Municipality</code>, <code>mon:Locality</code>.
+        </li>
+        <li><strong>Object Properties (<code>owl:ObjectProperty</code>):</strong> Relational verb phrases written in <code>lowerCamelCase</code>:
+          <code>mon:hasMonumentType</code>, <code>mon:hasClassification</code>, <code>mon:hasConstructionType</code>, <code>mon:hasHistoricalPeriod</code>, <code>mon:locatedInLocality</code>, <code>mon:locatedInMunicipality</code>, <code>mon:locatedInProvince</code>, <code>mon:localityOf</code>, <code>mon:municipalityOf</code>.
+        </li>
+        <li><strong>Datatype Properties (<code>owl:DatatypeProperty</code>):</strong> Attribute noun phrases written in <code>lowerCamelCase</code>:
+          <code>mon:identifier</code>, <code>mon:name</code>, <code>mon:bicIdentifier</code>, <code>mon:streetAddress</code>, <code>mon:postalCode</code>, <code>mon:description</code>, <code>mon:latitude</code>, <code>mon:longitude</code>.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Hands-On 2 &mdash; Linked Data Generation Process | Group10 | Licensed under CC BY 4.0
+  </footer>
+</body>
+</html>
