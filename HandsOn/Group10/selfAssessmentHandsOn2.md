@@ -30,8 +30,3 @@
 - [x] Does not mix labels in different languages (e.g., Spanish and English)
 - [x] Does not define multiple domains or multiple ranges in properties
 - [x] Contains at least one class that will be used to link to other entities
-
-## Comments on the self-assessment
-- **Licensing (`analysis.html`):** Both the original dataset from *Junta de Castilla y León* and the generated RDF dataset use **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
-- **Resource Naming Strategy (`analysis.html`):** Uses the custom base domain `http://www.monumentoscyl.es/`, separating ontology terms under `/ontology/monuments#` (hash pattern) from data individuals under `/resource/<class>/<id>` (slash pattern, e.g., `/resource/monument/{id}`, `/resource/province/{slug}`, `/resource/municipality/{slug}`).
-- **Ontology (`ontology/monuments.ttl`):** All class names use `UpperCamelCase`, all property names use `lowerCamelCase`, every property defines a single `rdfs:domain` and a single `rdfs:range`, and all ontology labels are written consistently in English (`@en`) without mixing languages. Classes `mon:Province` and `mon:Municipality` (as well as `mon:Monument`) will be used to link entities to external knowledge graphs such as Wikidata and DBpedia.
