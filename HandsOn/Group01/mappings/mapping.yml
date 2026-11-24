@@ -1,0 +1,103 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  schema1: http://schema.org/
+  srv: http://madridservices.linkeddata.es/ontology/services#
+  prop: http://madridservices.linkeddata.es/ontology/properties#
+  resFountain: http://madridservices.linkeddata.es/resource/DrinkingFountain/
+  resToilet: http://madridservices.linkeddata.es/resource/PublicToilet/
+  resLibrary: http://madridservices.linkeddata.es/resource/Library/
+  resSports: http://madridservices.linkeddata.es/resource/SportsCenter/
+  resCity: http://madridservices.linkeddata.es/resource/City/
+
+mappings:
+  DrinkingFountainMap:
+    sources:
+      - ['csv/300051-26-fuentes-updated.csv~csv']
+    s: http://madridservices.linkeddata.es/resource/DrinkingFountain/$(id)
+    po:
+      - [a, srv:DrinkingFountain]
+      - [rdfs:label, $(name), xsd:string]
+      - [prop:name, $(name), xsd:string]
+      - [prop:address, $(address), xsd:string]
+      - [prop:latitude, $(latitude), xsd:float]
+      - [prop:longitude, $(longitude), xsd:float]
+      - p: prop:locatedIn
+        o:
+          mapping: CityMap
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(locatedIn)]
+              - [str2, $(locatedIn)]
+
+  PublicToiletMap:
+    sources:
+      - ['csv/300103-3-aseos-publicos-operativos-updated.csv~csv']
+    s: http://madridservices.linkeddata.es/resource/PublicToilet/$(id)
+    po:
+      - [a, srv:PublicToilet]
+      - [rdfs:label, $(name), xsd:string]
+      - [prop:name, $(name), xsd:string]
+      - [prop:address, $(address), xsd:string]
+      - [prop:latitude, $(latitude), xsd:float]
+      - [prop:longitude, $(longitude), xsd:float]
+      - p: prop:locatedIn
+        o:
+          mapping: CityMap
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(locatedIn)]
+              - [str2, $(locatedIn)]
+
+  LibraryMap:
+    sources:
+      - ['csv/201747-1-bibliobuses-bibliotecas-updated.csv~csv']
+    s: http://madridservices.linkeddata.es/resource/Library/$(id)
+    po:
+      - [a, srv:Library]
+      - [rdfs:label, $(name), xsd:string]
+      - [prop:name, $(name), xsd:string]
+      - [prop:address, $(address), xsd:string]
+      - [prop:latitude, $(latitude), xsd:float]
+      - [prop:longitude, $(longitude), xsd:float]
+      - p: prop:locatedIn
+        o:
+          mapping: CityMap
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(locatedIn)]
+              - [str2, $(locatedIn)]
+
+  SportsCenterMap:
+    sources:
+      - ['csv/200186-0-polideportivos-updated.csv~csv']
+    s: http://madridservices.linkeddata.es/resource/SportsCenter/$(id)
+    po:
+      - [a, srv:SportsCenter]
+      - [rdfs:label, $(name), xsd:string]
+      - [prop:name, $(name), xsd:string]
+      - [prop:address, $(address), xsd:string]
+      - [prop:latitude, $(latitude), xsd:float]
+      - [prop:longitude, $(longitude), xsd:float]
+      - p: prop:locatedIn
+        o:
+          mapping: CityMap
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(locatedIn)]
+              - [str2, $(locatedIn)]
+
+  CityMap:
+    sources:
+      - ['csv/200186-0-polideportivos-updated.csv~csv']
+    s: http://madridservices.linkeddata.es/resource/City/$(locatedIn)
+    po:
+      - [a, schema1:City]
+      - [rdfs:label, $(locatedIn), xsd:string]
