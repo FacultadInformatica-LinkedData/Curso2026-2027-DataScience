@@ -1,27 +1,30 @@
 {
   "@context": "https://schema.org",
-  "@type": "Ciudad",
-  "@id":"https://ejemplo.org/recursos/Madrid",
-  "ciudad": "Madrid",
-  "población": 3527924,
-  "país": {
-    "@type": "País",
-	"@id":"https://ejemplo.org/recursos/España",
-    "nombre": "España"
+  "@type": "Place",
+  "@id": "https://University/resource/Fujian.org",
+  "name": "Fujian",
+  "population": "41.930.000",
+  "containedInPlace": {
+    "@type": "Country",
+	"@id": "https://University/resource/China.org",
+    "name": "China"
   },
-  "universidades": [
+  "University": [
     {
-      "@type": "Universidad",
-	  "@id":"https://ejemplo.org/recursos/UPM",
-      "nombre": "Universidad Politécnica de Madrid",
-      "acronym": "UPM"
+      "@type": "University",
+      "@id":  "https://University/resource/Xiamen.org",
+      "name": "Xiamen University",
+      "Acronym": "Xiamen"
+      
     },
     {
-      "@type": "Universidad",
-	  "@id":"https://ejemplo.org/recursos/UCM",
-      "nombre": "Universidad Complutense de Madrid",
-      "acronym": "UCM"
+      "@type": "University",
+      "@id":  "https://University/resource/Fujian.org",
+      "name": "Fujian University",
+      "Acronym": "Fujian"
+      
     }
+    
   ]
 }
 		
