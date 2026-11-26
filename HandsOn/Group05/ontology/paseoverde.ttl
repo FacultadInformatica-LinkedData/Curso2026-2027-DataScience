@@ -1,0 +1,38 @@
+@prefix pv: <https://example.org/paseoverde/ontology/PaseoVerde#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/paseoverde/ontology/PaseoVerde>
+    a owl:Ontology ;
+    rdfs:label "Paseo Verde Madrid"@es .
+
+pv:Instalacion
+    a owl:Class ;
+    rdfs:label "Instalación"@es .
+
+pv:Parque
+    a owl:Class ;
+    rdfs:subClassOf pv:Instalacion ;
+    rdfs:label "Parque o jardín"@es .
+
+pv:AreaCanina
+    a owl:Class ;
+    rdfs:subClassOf pv:Instalacion ;
+    rdfs:label "Área canina"@es .
+
+pv:Distrito
+    a owl:Class ;
+    rdfs:label "Distrito"@es .
+
+pv:enDistrito
+    a owl:ObjectProperty ;
+    rdfs:label "en distrito"@es ;
+    rdfs:domain pv:Instalacion ;
+    rdfs:range pv:Distrito .
+
+pv:numeroElementos
+    a owl:DatatypeProperty ;
+    rdfs:label "número de elementos"@es ;
+    rdfs:domain pv:AreaCanina ;
+    rdfs:range xsd:nonNegativeInteger .
