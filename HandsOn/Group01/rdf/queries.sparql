@@ -1,0 +1,71 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX srv: <http://madridservices.linkeddata.es/ontology/services#>
+PREFIX prop: <http://madridservices.linkeddata.es/ontology/properties#>
+PREFIX schema: <http://schema.org/>
+
+# Contar instancias por clase para comprobar que se cargaron todas las filas de los CSV
+SELECT ?tipo (COUNT(?s) AS ?total)
+WHERE {
+  ?s a ?tipo .
+}
+GROUP BY ?tipo
+
+# Comprobar si a algún servicio le falta etiqueta, dirección o coordenadas (debe devolver 0 filas)
+SELECT ?s ?tipo
+WHERE {
+  ?s a ?tipo .
+  FILTER (?tipo IN (srv:DrinkingFountain, srv:PublicToilet, srv:Library, srv:SportsCenter))
+  FILTER (
+    NOT EXISTS { ?s rdfs:label ?etiqueta } ||
+    NOT EXISTS { ?s prop:address ?dir } ||
+    NOT EXISTS { ?s prop:latitude ?lat } ||
+    NOT EXISTS { ?s prop:longitude ?lon }
+  )
+}
+
+# Verificar el enlace locatedIn entre los servicios y Madrid
+SELECT ?ciudad (COUNT(?s) AS ?serviciosEnlazados)
+WHERE {
+  ?s prop:locatedIn ?ciudad .
+  ?ciudad a schema:City .
+}
+GROUP BY ?ciudad
+
+# Revisar que las coordenadas tengan tipo xsd:float y caigan dentro de Madrid (debe devolver 0 filas)
+SELECT ?s ?lat ?lon
+WHERE {
+  ?s prop:latitude ?lat ;
+     prop:longitude ?lon .
+  FILTER (
+    DATATYPE(?lat) != xsd:float ||
+    DATATYPE(?lon) != xsd:float ||
+    ?lat < 40.30 || ?lat > 40.65 ||
+    ?lon < -3.90 || ?lon > -3.50
+  )
+}
+
+# Sacar los servicios públicos del distrito de Arganzuela filtrando por coordenadas
+SELECT ?tipo ?nombre ?dir ?lat ?lon
+WHERE {
+  ?s a ?tipo ;
+     prop:name ?nombre ;
+     prop:address ?dir ;
+     prop:latitude ?lat ;
+     prop:longitude ?lon .
+  FILTER (?tipo != schema:City)
+  FILTER (?lat >= 40.385 && ?lat <= 40.408 && ?lon >= -3.715 && ?lon <= -3.678)
+}
+ORDER BY ?tipo ?nombre
+
+# Muestra de bibliotecas y polideportivos con sus propiedades principales
+SELECT ?s ?tipo ?nombre ?dir ?ciudad
+WHERE {
+  VALUES ?tipo { srv:SportsCenter srv:Library }
+  ?s a ?tipo ;
+     prop:name ?nombre ;
+     prop:address ?dir ;
+     prop:locatedIn ?ciudad .
+}
+LIMIT 15
