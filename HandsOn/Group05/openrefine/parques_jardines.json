@@ -1,0 +1,43 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COD-DISTRITO",
+    "expression": "grel:if(isBlank(value),\n  with(cells[\"DISTRITO\"].value, distrito,\n    if(distrito == \"CARABANCHEL\", \"11\",\n      if(distrito == \"MONCLOA-ARAVACA\", \"9\",\n        if(distrito == \"RETIRO\", \"3\",\n          if(distrito == \"VICALVARO\", \"19\",\n            if(distrito == \"VILLAVERDE\", \"17\", value)\n          )\n        )\n      )\n    )\n  ),\n  value\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna COD-DISTRITO usando la expresión grel:if(isBlank(value),\n  with(cells[\"DISTRITO\"].value, distrito,\n    if(distrito == \"CARABANCHEL\", \"11\",\n      if(distrito == \"MONCLOA-ARAVACA\", \"9\",\n        if(distrito == \"RETIRO\", \"3\",\n          if(distrito == \"VICALVARO\", \"19\",\n            if(distrito == \"VILLAVERDE\", \"17\", value)\n          )\n        )\n      )\n    )\n  ),\n  value\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "expression": "grel:if(value == \"DISTRITO\", null, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Transforma el texto de las celdas en la columna DISTRITO usando la expresión grel:if(value == \"DISTRITO\", null, value)"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "PLANTA",
+    "description": "Eliminar columna PLANTA"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ESCALERAS",
+    "description": "Eliminar columna ESCALERAS"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "FAX",
+    "description": "Eliminar columna FAX"
+  }
+]

@@ -1,0 +1,17 @@
+@prefix pv: <https://example.org/paseoverde/ontology/PaseoVerde#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/paseoverde/resource/Parque/5986859>
+    a pv:Parque ;
+    rdfs:label "El Capricho de la Alameda Osuna"@es ;
+    pv:enDistrito <https://example.org/paseoverde/resource/Distrito/21> .
+
+<https://example.org/paseoverde/resource/AreaCanina/3569057>
+    a pv:AreaCanina ;
+    pv:enDistrito <https://example.org/paseoverde/resource/Distrito/21> ;
+    pv:numeroElementos "0"^^xsd:nonNegativeInteger .
+
+<https://example.org/paseoverde/resource/Distrito/21>
+    a pv:Distrito ;
+    rdfs:label "Barajas"@es .

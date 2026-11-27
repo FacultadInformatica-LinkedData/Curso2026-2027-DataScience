@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Hands-on 2 · Paseo Verde Madrid</title>
+</head>
+<body>
+  <h1>Hands-on 2 · Paseo Verde Madrid · Grupo 05</h1>
+
+  <section>
+    <h2>1. Análisis de los datos</h2>
+
+    <h3>Parques y jardines</h3>
+    <p>
+      El CSV contiene 208 registros y 32 columnas. Cada fila representa un
+      parque o jardín. El campo PK está presente en todas las filas y es único.
+      El fichero incluye el nombre, la dirección, el barrio, el distrito y
+      las coordenadas. Las columnas LATITUD y LONGITUD tienen 5 valores
+      vacíos cada una.
+    </p>
+
+    <h3>Áreas caninas</h3>
+    <p>
+      El CSV contiene 113 registros y 23 columnas. Cada fila representa un
+      área canina. El campo ID está presente en todas las filas y es único.
+      Las columnas LATITUD y LONGITUD tienen solo 3 valores informados cada una.
+      En cambio, los 113 registros tienen COORD_GIS_X y COORD_GIS_Y, y en todos
+      consta ETRS89 en SISTEMA_COORD. Antes de convertir estas coordenadas
+      hay que verificar la proyección exacta.
+    </p>
+    <h3>Tipos de datos y rangos observados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Dataset</th>
+          <th scope="col">Campo</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Valores observados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Parques y jardines</td><td>LATITUD</td><td>Decimal</td><td>De 40,344520 a 40,582363. Hay 5 valores vac&iacute;os.</td></tr>
+        <tr><td>Parques y jardines</td><td>LONGITUD</td><td>Decimal</td><td>De &minus;3,785622 a &minus;3,578051. Hay 5 valores vac&iacute;os.</td></tr>
+        <tr><td>Parques y jardines</td><td>COD-DISTRITO</td><td>C&oacute;digo</td><td>De 1 a 21. Hay 14 valores vac&iacute;os.</td></tr>
+        <tr><td>&Aacute;reas caninas</td><td>COORD_GIS_X y COORD_GIS_Y</td><td>Decimal</td><td>X va de 433236,155 a 450964,069 e Y de 4466883,522 a 4482994,375. Ambos campos est&aacute;n completos y SISTEMA_COORD indica ETRS89.</td></tr>
+        <tr><td>&Aacute;reas caninas</td><td>TOTAL_ELEM</td><td>Entero</td><td>De 0 a 23. Hay 33 registros con valor 0 y ning&uacute;n valor vac&iacute;o.</td></tr>
+        <tr><td>&Aacute;reas caninas</td><td>ESTADO</td><td>Texto</td><td>Los 113 registros tienen el valor OPERATIVO.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+  <h2>2. Licencias y procedencia</h2>
+  <p>
+    El Ayuntamiento de Madrid publica ambos conjuntos en su Portal de Datos
+    Abiertos. Las fichas identifican una direcci&oacute;n general municipal como
+    responsable de cada conjunto. El Ayuntamiento autoriza la reutilizaci&oacute;n
+    de sus datos municipales. Las fichas no identifican a un titular de
+    derechos distinto del Ayuntamiento.
+    V&eacute;anse las <a href="https://datos.madrid.es/pages/condiciones-generales-ayuntamiento-de-madrid">
+    condiciones generales de reutilizaci&oacute;n</a>.
+  </p>
+  <ul>
+    <li>
+      <a href="https://datos.madrid.es/dataset/200761-0-parques-jardines/information">
+        Principales parques y jardines municipales
+      </a> — CC BY 4.0.
+    </li>
+    <li>
+      <a href="https://datos.madrid.es/dataset/300094-0-areas-caninas/information">
+        Áreas caninas
+      </a> — CC BY 4.0.
+    </li>
+  </ul>
+  <p>
+    Se propone publicar el conjunto RDF generado bajo
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+    Se acreditará al Ayuntamiento de Madrid, se enlazarán ambos conjuntos
+    originales y se indicará que los datos se han transformado a RDF.
+  </p>
+</section>
+
+<section>
+  <h2>3. Estrategia de URI</h2>
+
+  <p>
+    Para el prototipo se propone la base provisional
+    <code>https://example.org/paseoverde/</code>.
+    Antes de publicar el grafo, se sustituirá por un dominio bajo control
+    del proyecto y se mantendrán estables las URI publicadas.
+  </p>
+
+  <h3>Patrones de identificación</h3>
+  <ul>
+    <li>
+      Clases de la ontología: <code>ontology/PaseoVerde#Parque</code>,
+      <code>ontology/PaseoVerde#AreaCanina</code> y
+      <code>ontology/PaseoVerde#Distrito</code>.
+    </li>
+    <li>
+      Propiedades de la ontología: <code>ontology/PaseoVerde#enDistrito</code>
+      y <code>ontology/PaseoVerde#numeroElementos</code>.
+      Sus URI se definen independientemente de la clase que las utiliza.
+    </li>
+    <li>
+      Parques: <code>resource/Parque/{PK}</code>.
+    </li>
+    <li>
+      Áreas caninas: <code>resource/AreaCanina/{ID}</code>.
+    </li>
+    <li>
+      Distritos: <code>resource/Distrito/{codigo}</code>,
+      usando el código municipal en formato entero.
+    </li>
+  </ul>
+
+  <p>
+    Los términos de la ontología usan fragmentos (<code>#</code>) porque
+    se describen en un mismo documento. Los individuos usan rutas con
+    barras (<code>/</code>) para poder consultar sus descripciones por
+    separado. Cada tipo de recurso tiene su propia ruta.
+  </p>
+
+  <h3>Negociaci&oacute;n de contenido</h3>
+  <p>
+    Si se publica el grafo, la cabecera HTTP <code>Accept</code> permitir&aacute;
+    solicitar la descripci&oacute;n del recurso en HTML (<code>text/html</code>)
+    o RDF en Turtle (<code>text/turtle</code>).
+  </p>
+</section>
+</body>
+</html>
