@@ -1,0 +1,148 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mon: <http://www.monumentoscyl.es/ontology/monuments#> .
+
+#################################################################
+#    Monument Instances (Sample from relacion-monumentos.csv)
+#################################################################
+
+<http://www.monumentoscyl.es/resource/monument/23778> a mon:Monument ;
+    rdfs:label "Catedral de Ávila"@es ;
+    mon:identifier 23778 ;
+    mon:name "Catedral de Ávila"^^xsd:string ;
+    mon:bicIdentifier "264"^^xsd:string ;
+    mon:streetAddress "Pza. de la Catedral s/n"^^xsd:string ;
+    mon:postalCode "05001"^^xsd:string ;
+    mon:description "Es una catedral-castillo, en la que las almenas, matacanes y paseos de vigías combinan espléndidamente con su estructura. Su historia está indisolublemente unida a la de la ciudad, incluso su ábside, el llamado Cimorro, por el que asoma Alfonso VII, representando un hecho histórico, es motivo central del escudo de Ávila. Consagrada a San Salvador, la catedral comenzaría a construirse en el 1091."@es ;
+    mon:latitude "40.655814"^^xsd:decimal ;
+    mon:longitude "-4.697039"^^xsd:decimal ;
+    mon:hasMonumentType <http://www.monumentoscyl.es/resource/monument-type/Catedrales> ;
+    mon:hasClassification <http://www.monumentoscyl.es/resource/classification/ArquitecturaReligiosa> ;
+    mon:hasConstructionType <http://www.monumentoscyl.es/resource/construction-type/Catedral> ;
+    mon:hasHistoricalPeriod <http://www.monumentoscyl.es/resource/historical-period/EdadMedia> ;
+    mon:locatedInLocality <http://www.monumentoscyl.es/resource/locality/Avila> ;
+    mon:locatedInMunicipality <http://www.monumentoscyl.es/resource/municipality/Avila> ;
+    mon:locatedInProvince <http://www.monumentoscyl.es/resource/province/Avila> .
+
+<http://www.monumentoscyl.es/resource/monument/23779> a mon:Monument ;
+    rdfs:label "Catedral de Burgos"@es ;
+    mon:identifier 23779 ;
+    mon:name "Catedral de Burgos"^^xsd:string ;
+    mon:bicIdentifier "1715"^^xsd:string ;
+    mon:streetAddress "Plaza de Santa María s/n"^^xsd:string ;
+    mon:postalCode "09003"^^xsd:string ;
+    mon:description "Es uno de los conjuntos arquitectónicos más hermosos del gótico español y está declarada Patrimonio Mundial por la UNESCO. Su construcción se prolongó desde 1221 hasta 1765 y, aunque predomina el estilo gótico, hay numerosas referencias artísticas repartidas por todo el edificio."@es ;
+    mon:latitude "42.340820"^^xsd:decimal ;
+    mon:longitude "-3.704384"^^xsd:decimal ;
+    mon:hasMonumentType <http://www.monumentoscyl.es/resource/monument-type/Catedrales> ;
+    mon:hasClassification <http://www.monumentoscyl.es/resource/classification/ArquitecturaReligiosa> ;
+    mon:hasConstructionType <http://www.monumentoscyl.es/resource/construction-type/Catedral> ;
+    mon:hasHistoricalPeriod <http://www.monumentoscyl.es/resource/historical-period/EdadMedia> ;
+    mon:locatedInLocality <http://www.monumentoscyl.es/resource/locality/Burgos> ;
+    mon:locatedInMunicipality <http://www.monumentoscyl.es/resource/municipality/Burgos> ;
+    mon:locatedInProvince <http://www.monumentoscyl.es/resource/province/Burgos> .
+
+<http://www.monumentoscyl.es/resource/monument/23780> a mon:Monument ;
+    rdfs:label "Catedral de Astorga"@es ;
+    mon:identifier 23780 ;
+    mon:name "Catedral de Astorga"^^xsd:string ;
+    mon:bicIdentifier "4282"^^xsd:string ;
+    mon:streetAddress "Pza. de la Catedral, s/n"^^xsd:string ;
+    mon:postalCode "24700"^^xsd:string ;
+    mon:description "Es uno de los edificios más representativos de la capital maragata, ciudad noble, leal y bimilenaria de la provincia leonesa. Se empezó a construir, tal y como la conocemos en la actualidad, en 1471, en el mismo solar donde la precedieron otras catedrales románicas de los siglos XI al XIII."@es ;
+    mon:latitude "42.457966"^^xsd:decimal ;
+    mon:longitude "-6.056899"^^xsd:decimal ;
+    mon:hasMonumentType <http://www.monumentoscyl.es/resource/monument-type/Catedrales> ;
+    mon:hasClassification <http://www.monumentoscyl.es/resource/classification/ArquitecturaReligiosa> ;
+    mon:hasConstructionType <http://www.monumentoscyl.es/resource/construction-type/Catedral> ;
+    mon:hasHistoricalPeriod <http://www.monumentoscyl.es/resource/historical-period/EdadModerna> ;
+    mon:locatedInLocality <http://www.monumentoscyl.es/resource/locality/Astorga> ;
+    mon:locatedInMunicipality <http://www.monumentoscyl.es/resource/municipality/Astorga> ;
+    mon:locatedInProvince <http://www.monumentoscyl.es/resource/province/Leon> .
+
+<http://www.monumentoscyl.es/resource/monument/23784> a mon:Monument ;
+    rdfs:label "Catedrales de Salamanca"@es ;
+    mon:identifier 23784 ;
+    mon:name "Catedrales de Salamanca"^^xsd:string ;
+    mon:bicIdentifier "9598"^^xsd:string , "9618"^^xsd:string ;
+    mon:streetAddress "Pl. Juan XXIII, s/n"^^xsd:string ;
+    mon:postalCode "37008"^^xsd:string ;
+    mon:description "Conjunto formado por la Catedral Vieja, iniciada en el siglo XII en estilo románico y de transición al gótico, y la Catedral Nueva, construida entre los siglos XVI y XVIII en estilos gótico tardío, renacentista y barroco."@es ;
+    mon:latitude "40.960692"^^xsd:decimal ;
+    mon:longitude "-5.666198"^^xsd:decimal ;
+    mon:hasMonumentType <http://www.monumentoscyl.es/resource/monument-type/Catedrales> ;
+    mon:hasClassification <http://www.monumentoscyl.es/resource/classification/ArquitecturaReligiosa> ;
+    mon:hasConstructionType <http://www.monumentoscyl.es/resource/construction-type/Catedral> ;
+    mon:hasHistoricalPeriod <http://www.monumentoscyl.es/resource/historical-period/EdadMedia> ,
+                            <http://www.monumentoscyl.es/resource/historical-period/EdadModerna> ;
+    mon:locatedInLocality <http://www.monumentoscyl.es/resource/locality/Salamanca> ;
+    mon:locatedInMunicipality <http://www.monumentoscyl.es/resource/municipality/Salamanca> ;
+    mon:locatedInProvince <http://www.monumentoscyl.es/resource/province/Salamanca> .
+
+#################################################################
+#    Controlled Vocabulary & Categorical Instances
+#################################################################
+
+<http://www.monumentoscyl.es/resource/monument-type/Catedrales> a mon:MonumentType ;
+    rdfs:label "Catedrales"@es , "Cathedrals"@en .
+
+<http://www.monumentoscyl.es/resource/classification/ArquitecturaReligiosa> a mon:Classification ;
+    rdfs:label "Arquitectura Religiosa"@es , "Religious Architecture"@en .
+
+<http://www.monumentoscyl.es/resource/construction-type/Catedral> a mon:ConstructionType ;
+    rdfs:label "Catedral"@es , "Cathedral"@en .
+
+<http://www.monumentoscyl.es/resource/historical-period/EdadMedia> a mon:HistoricalPeriod ;
+    rdfs:label "Edad Media"@es , "Middle Ages"@en .
+
+<http://www.monumentoscyl.es/resource/historical-period/EdadModerna> a mon:HistoricalPeriod ;
+    rdfs:label "Edad Moderna"@es , "Modern Age"@en .
+
+#################################################################
+#    Administrative & Geographical Instances
+#################################################################
+
+<http://www.monumentoscyl.es/resource/province/Avila> a mon:Province ;
+    rdfs:label "Ávila"@es .
+
+<http://www.monumentoscyl.es/resource/municipality/Avila> a mon:Municipality ;
+    rdfs:label "Ávila"@es ;
+    mon:municipalityOf <http://www.monumentoscyl.es/resource/province/Avila> .
+
+<http://www.monumentoscyl.es/resource/locality/Avila> a mon:Locality ;
+    rdfs:label "Ávila"@es ;
+    mon:localityOf <http://www.monumentoscyl.es/resource/municipality/Avila> .
+
+<http://www.monumentoscyl.es/resource/province/Burgos> a mon:Province ;
+    rdfs:label "Burgos"@es .
+
+<http://www.monumentoscyl.es/resource/municipality/Burgos> a mon:Municipality ;
+    rdfs:label "Burgos"@es ;
+    mon:municipalityOf <http://www.monumentoscyl.es/resource/province/Burgos> .
+
+<http://www.monumentoscyl.es/resource/locality/Burgos> a mon:Locality ;
+    rdfs:label "Burgos"@es ;
+    mon:localityOf <http://www.monumentoscyl.es/resource/municipality/Burgos> .
+
+<http://www.monumentoscyl.es/resource/province/Leon> a mon:Province ;
+    rdfs:label "León"@es .
+
+<http://www.monumentoscyl.es/resource/municipality/Astorga> a mon:Municipality ;
+    rdfs:label "Astorga"@es ;
+    mon:municipalityOf <http://www.monumentoscyl.es/resource/province/Leon> .
+
+<http://www.monumentoscyl.es/resource/locality/Astorga> a mon:Locality ;
+    rdfs:label "Astorga"@es ;
+    mon:localityOf <http://www.monumentoscyl.es/resource/municipality/Astorga> .
+
+<http://www.monumentoscyl.es/resource/province/Salamanca> a mon:Province ;
+    rdfs:label "Salamanca"@es .
+
+<http://www.monumentoscyl.es/resource/municipality/Salamanca> a mon:Municipality ;
+    rdfs:label "Salamanca"@es ;
+    mon:municipalityOf <http://www.monumentoscyl.es/resource/province/Salamanca> .
+
+<http://www.monumentoscyl.es/resource/locality/Salamanca> a mon:Locality ;
+    rdfs:label "Salamanca"@es ;
+    mon:localityOf <http://www.monumentoscyl.es/resource/municipality/Salamanca> .

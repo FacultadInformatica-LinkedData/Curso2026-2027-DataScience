@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Requisitos del dataset — Relación de monumentos</title>
+<style>
+:root{--azul:#174b78;--texto:#263238;--fondo:#f3f6fa;--borde:#dce3ea;--verde:#17633a;--verde-fondo:#e5f4eb}
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;line-height:1.55;color:var(--texto);max-width:900px;margin:30px auto;padding:0 20px;background:var(--fondo)}
+header,main{background:#fff;border:1px solid var(--borde);border-radius:10px;padding:22px 26px;margin-bottom:16px}
+h1,h2{color:var(--azul)}h1{margin:0 0 8px;font-size:1.8rem}h2{margin:0 0 16px;border-bottom:1px solid var(--borde);padding-bottom:8px}
+h3{font-size:1.05rem;margin:20px 0 6px}
+p{margin:7px 0}
+.estado{display:inline-block;padding:2px 9px;border-radius:14px;background:var(--verde-fondo);color:var(--verde);font-size:.8em;font-weight:bold;white-space:nowrap}
+code{background:#eef2f6;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}
+ul{padding-left:21px;margin:7px 0}li{margin:5px 0}
+@media(max-width:600px){body{margin:16px auto;padding:0 12px}header,main{padding:16px}h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<header>
+<h1>Requisitos del conjunto de datos</h1>
+<p><strong>Grupo 10 — Relación de monumentos</strong></p>
+<p>Archivo: <code>relacion-monumentos.csv</code></p>
+</header>
+<main>
+<h2>Descripción</h2>
+<p>El CSV reúne información sobre monumentos de Castilla y León: nombre, tipología, clasificación, periodo histórico, dirección y municipio. También incluye identificadores y coordenadas geográficas. Los campos están separados por punto y coma (<code>;</code>).</p>
+
+<h2>Evaluación de los cuatro requisitos</h2>
+<h3>R1. Pertenencia a un dominio Smart City <span class="estado">Cumplido</span></h3>
+<p>El conjunto pertenece al ámbito del patrimonio cultural y el turismo. La información permite localizar monumentos, consultar sus características y apoyar servicios de información turística y rutas culturales.</p>
+
+<h3>R2. Disponibilidad en formato CSV <span class="estado">Cumplido</span></h3>
+<p>Los datos se proporcionan en el archivo <code>relacion-monumentos.csv</code>, con estructura tabular: cada fila representa un monumento y cada columna uno de sus atributos.</p>
+
+<h3>R3. Licencia abierta que permite su publicación <span class="estado">Cumplido</span></h3>
+<p>La ficha oficial del conjunto declara la licencia <strong>Creative Commons Reconocimiento 4.0 (CC BY 4.0)</strong>. Esta permite reutilizar, modificar y compartir los datos, siempre que se reconozca la autoría y se respeten las condiciones de atribución.</p>
+
+<h3>R4. Posibilidad de enlazar los datos con entidades reales <span class="estado">Cumplido</span></h3>
+<p>Los registros describen monumentos físicos e incluyen información que facilita su identificación y localización:</p>
+<ul>
+<li><strong>Identificadores:</strong> <code>identificador</code> e <code>identificadorBienInteresCultural</code>.</li>
+<li><strong>Coordenadas:</strong> <code>coordenadas_latitud</code>, <code>coordenadas_longitud</code> y <code>pto_geolocalizado</code>.</li>
+<li><strong>Localización:</strong> nombre, calle, código postal, provincia, municipio y localidad.</li>
+</ul>
+<p>Estos atributos permiten relacionar los registros con monumentos y ubicaciones reales y facilitan su integración posterior con otras fuentes de información.</p>
+</main>
+</body>
+</html>

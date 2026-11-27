@@ -1,0 +1,178 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix schema: <https://schema.org/> .
+@prefix mon: <http://www.monumentoscyl.es/ontology/monuments#> .
+
+<http://www.monumentoscyl.es/ontology/monuments> a owl:Ontology ;
+    dcterms:title "Castilla y Leon Cultural Heritage Monuments Ontology"@en ,
+                  "Ontologia de Monumentos del Patrimonio Cultural de Castilla y Leon"@es ;
+    dcterms:description "Lightweight OWL ontology for representing cultural heritage monuments, architectural classifications, historical periods, and administrative locations in Castilla y Leon (Spain)."@en ,
+                        "Ontologia ligera en OWL para representar monumentos del patrimonio cultural, clasificaciones arquitectonicas, periodos historicos y ubicaciones administrativas en Castilla y Leon (Espana)."@es ;
+    dcterms:creator "GroupXX" ;
+    dcterms:source <https://datosabiertos.jcyl.es/web/jcyl/set/es/cultura-ocio/monumentos/1284325843131> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    owl:versionInfo "1.0.0" .
+
+#################################################################
+#    Classes
+#################################################################
+
+mon:Monument a owl:Class ;
+    rdfs:subClassOf schema:LandmarksOrHistoricalBuildings ;
+    rdfs:label "Monument"@en , "Monumento"@es ;
+    rdfs:comment "A building, archaeological site, or cultural heritage landmark cataloged in Castilla y Leon."@en ,
+                 "Edificio, yacimiento arqueologico o bien del patrimonio cultural catalogado en Castilla y Leon."@es .
+
+mon:MonumentType a owl:Class ;
+    rdfs:label "Monument Type"@en , "Tipo de Monumento"@es ;
+    rdfs:comment "The functional or typological category assigned to a monument (e.g., Cathedrals, Castles, Monasteries)."@en ,
+                 "Categoria funcional o tipologica asignada a un monumento (ej. Catedrales, Castillos, Monasterios)."@es .
+
+mon:Classification a owl:Class ;
+    rdfs:label "Architectural Classification"@en , "Clasificacion Arquitectonica"@es ;
+    rdfs:comment "Broad heritage or architectural classification of a monument (e.g., Religious Architecture, Civil Architecture)."@en ,
+                 "Clasificacion patrimonial o arquitectonica general de un monumento (ej. Arquitectura Religiosa, Arquitectura Civil)."@es .
+
+mon:ConstructionType a owl:Class ;
+    rdfs:label "Construction Type"@en , "Tipo de Construccion"@es ;
+    rdfs:comment "Specific structural or architectural form of a monument (e.g., Cathedral, Church, Castle, Palace)."@en ,
+                 "Forma estructural o arquitectonica especifica de un monumento (ej. Catedral, Iglesia, Castillo, Palacio)."@es .
+
+mon:HistoricalPeriod a owl:Class ;
+    rdfs:label "Historical Period"@en , "Periodo Historico"@es ;
+    rdfs:comment "Historical era or period associated with the construction or origin of a monument (e.g., Middle Ages, Modern Age, Roman)."@en ,
+                 "Era o periodo historico asociado a la construccion u origen de un monumento (ej. Edad Media, Edad Moderna, Romano)."@es .
+
+mon:Province a owl:Class ;
+    rdfs:subClassOf schema:AdministrativeArea ;
+    rdfs:label "Province"@en , "Provincia"@es ;
+    rdfs:comment "Administrative province within the Autonomous Community of Castilla y Leon."@en ,
+                 "Provincia administrativa dentro de la Comunidad Autonoma de Castilla y Leon."@es .
+
+mon:Municipality a owl:Class ;
+    rdfs:subClassOf schema:AdministrativeArea ;
+    rdfs:label "Municipality"@en , "Municipio"@es ;
+    rdfs:comment "Administrative municipality within a province of Castilla y Leon."@en ,
+                 "Municipio administrativo dentro de una provincia de Castilla y Leon."@es .
+
+mon:Locality a owl:Class ;
+    rdfs:subClassOf schema:AdministrativeArea ;
+    rdfs:label "Locality"@en , "Localidad"@es ;
+    rdfs:comment "Specific populated place, town, or village within a municipality."@en ,
+                 "Entidad singular de poblacion, ciudad o localidad dentro de un municipio."@es .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+mon:hasMonumentType a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:MonumentType ;
+    rdfs:label "has monument type"@en , "tiene tipo de monumento"@es ;
+    rdfs:comment "Relates a monument to its typological category."@en .
+
+mon:hasClassification a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:Classification ;
+    rdfs:label "has classification"@en , "tiene clasificacion"@es ;
+    rdfs:comment "Relates a monument to its broad heritage classification."@en .
+
+mon:hasConstructionType a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:ConstructionType ;
+    rdfs:label "has construction type"@en , "tiene tipo de construccion"@es ;
+    rdfs:comment "Relates a monument to its specific construction typology."@en .
+
+mon:hasHistoricalPeriod a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:HistoricalPeriod ;
+    rdfs:label "has historical period"@en , "tiene periodo historico"@es ;
+    rdfs:comment "Relates a monument to one or more historical periods associated with its construction."@en .
+
+mon:locatedInLocality a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:Locality ;
+    rdfs:label "located in locality"@en , "ubicado en localidad"@es ;
+    rdfs:comment "Relates a monument to the locality where it is situated."@en .
+
+mon:locatedInMunicipality a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:Municipality ;
+    rdfs:label "located in municipality"@en , "ubicado en municipio"@es ;
+    rdfs:comment "Relates a monument to the municipality where it is situated."@en .
+
+mon:locatedInProvince a owl:ObjectProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range mon:Province ;
+    rdfs:label "located in province"@en , "ubicado en provincia"@es ;
+    rdfs:comment "Relates a monument to the province where it is situated."@en .
+
+mon:localityOf a owl:ObjectProperty ;
+    rdfs:domain mon:Locality ;
+    rdfs:range mon:Municipality ;
+    rdfs:label "locality of"@en , "localidad de"@es ;
+    rdfs:comment "Relates a locality to the municipality to which it belongs."@en .
+
+mon:municipalityOf a owl:ObjectProperty ;
+    rdfs:domain mon:Municipality ;
+    rdfs:range mon:Province ;
+    rdfs:label "municipality of"@en , "municipio de"@es ;
+    rdfs:comment "Relates a municipality to the province to which it belongs."@en .
+
+#################################################################
+#    Datatype Properties
+#################################################################
+
+mon:identifier a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:integer ;
+    rdfs:label "identifier"@en , "identificador"@es ;
+    rdfs:comment "Unique numeric identifier assigned to the monument in the Junta de Castilla y Leon catalog."@en .
+
+mon:name a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:string ;
+    rdfs:label "name"@en , "nombre"@es ;
+    rdfs:comment "Official name of the monument."@en .
+
+mon:bicIdentifier a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:string ;
+    rdfs:label "BIC identifier"@en , "identificador Bien de Interes Cultural"@es ;
+    rdfs:comment "Identifier code in the Spanish Cultural Heritage registry (Bien de Interes Cultural)."@en .
+
+mon:streetAddress a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:string ;
+    rdfs:label "street address"@en , "direccion o calle"@es ;
+    rdfs:comment "Street name, square, or road address where the monument is located."@en .
+
+mon:postalCode a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:string ;
+    rdfs:label "postal code"@en , "codigo postal"@es ;
+    rdfs:comment "Five-digit Spanish postal code formatted as a string to preserve leading zeros."@en .
+
+mon:description a owl:DatatypeProperty ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:string ;
+    rdfs:label "description"@en , "descripcion"@es ;
+    rdfs:comment "Historical and architectural textual description of the monument (cleaned of HTML markup)."@en .
+
+mon:latitude a owl:DatatypeProperty ;
+    rdfs:subPropertyOf geo:lat ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "latitude"@en , "latitud"@es ;
+    rdfs:comment "WGS84 geographic latitude in decimal degrees."@en .
+
+mon:longitude a owl:DatatypeProperty ;
+    rdfs:subPropertyOf geo:long ;
+    rdfs:domain mon:Monument ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "longitude"@en , "longitud"@es ;
+    rdfs:comment "WGS84 geographic longitude in decimal degrees."@en .

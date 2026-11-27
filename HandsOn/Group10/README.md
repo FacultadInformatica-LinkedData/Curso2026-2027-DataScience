@@ -9,3 +9,5 @@ Aarón Fernández-Pello San Román -> aaronpello
 Iván Bódalo Rodríguez -> bodaloivan
 
 Nicolás Sánchez Castelo -> Nicsancas
+
+Levy Chocron Bengualid -> upmlevych

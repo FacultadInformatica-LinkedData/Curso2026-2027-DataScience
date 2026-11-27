@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Requisitos de la aplicación</title>
+<style>
+body{font-family:Arial,sans-serif;line-height:1.55;color:#263442;background:#f3f6f8;max-width:900px;margin:28px auto;padding:0 18px}
+header,section{background:white;border:1px solid #dce3e8;border-radius:10px;padding:20px 24px;margin-bottom:16px}
+h1,h2,h3{color:#174b78}h1{margin:0 0 8px;font-size:26px}h2{margin:0 0 12px;font-size:20px;border-bottom:1px solid #e1e7eb;padding-bottom:7px}
+h3{font-size:16px;margin:17px 0 5px}p{margin:7px 0}
+code{background:#eef2f5;padding:2px 5px;border-radius:4px}
+.mock{border:1px solid #d5dfe5;border-radius:8px;padding:14px;background:#fbfcfd;margin-top:10px}
+.bar{background:#eaf1f5;padding:9px;border-radius:5px;font-weight:bold;color:#174b78;margin-bottom:10px}
+.search,.filter,.item,.detail{border:1px solid #dce3e8;background:white;border-radius:5px;padding:8px;margin:6px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.map{height:105px;background:#e9f0e9;border:1px solid #d5dfd5;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#627568;font-size:13px}
+.tag{display:inline-block;background:#e5f2e9;color:#286044;padding:2px 8px;border-radius:12px;font-size:12px}
+@media(max-width:600px){body{margin:14px auto;padding:0 10px}header,section{padding:16px}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>Requisitos de la aplicación</h1>
+<p><strong>Grupo 10 — Explorador de monumentos</strong></p>
+<p>Aplicación basada en el conjunto de datos <code>relacion-monumentos.csv</code>.</p>
+</header>
+
+<section>
+<h2>1. Descripción</h2>
+<p>La aplicación permitirá consultar monumentos de Castilla y León, buscar por nombre, filtrar por ubicación o tipo y visualizar su localización en un mapa. También permitirá abrir una ficha con la información disponible de cada monumento.</p>
+</section>
+
+<section>
+<h2>2. Requisitos principales</h2>
+<h3>R1. Consulta de monumentos</h3>
+<p>Mostrar un listado con el nombre, municipio y tipo de cada monumento.</p>
+<h3>R2. Búsqueda y filtros</h3>
+<p>Buscar por nombre y filtrar por provincia, municipio, tipo de monumento o periodo histórico, cuando esos datos estén disponibles.</p>
+<h3>R3. Ficha informativa</h3>
+<p>Mostrar la descripción, clasificación, periodo histórico y dirección del monumento seleccionado.</p>
+<h3>R4. Mapa</h3>
+<p>Representar en un mapa los monumentos que dispongan de coordenadas válidas.</p>
+</section>
+
+<section>
+<h2>3. Mock-up de la pantalla principal</h2>
+<p>La pantalla permitirá buscar, filtrar y consultar los resultados.</p>
+<div class="mock">
+<div class="bar">PATRIMONIO · CASTILLA Y LEÓN</div>
+<div class="search">Buscar monumentos por nombre...</div>
+<div class="row">
+<div>
+<div class="filter">Provincia ▾</div>
+<div class="filter">Municipio ▾</div>
+<div class="filter">Tipo de monumento ▾</div>
+<div class="filter">Periodo histórico ▾</div>
+<div class="item"><strong>Monumento 1</strong><br><small>Municipio · Tipo</small></div>
+<div class="item"><strong>Monumento 2</strong><br><small>Municipio · Tipo</small></div>
+</div>
+<div>
+<div class="map">Mapa con marcadores de monumentos</div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>4. Mock-up de la ficha de un monumento</h2>
+<p>Al seleccionar un resultado se mostrará su información detallada.</p>
+<div class="mock">
+<div class="bar">PATRIMONIO · CASTILLA Y LEÓN</div>
+<span class="tag">Tipo de monumento</span>
+<h3>Nombre del monumento</h3>
+<p>Municipio · Provincia</p>
+<div class="row">
+<div>
+<div class="detail"><strong>Periodo histórico:</strong> dato disponible</div>
+<div class="detail"><strong>Clasificación:</strong> dato disponible</div>
+<div class="detail"><strong>Dirección:</strong> dato disponible</div>
+</div>
+<div class="map">Ubicación en el mapa</div>
+</div>
+<p><strong>Descripción:</strong> información descriptiva del monumento.</p>
+</div>
+</section>
+</body>
+</html>
